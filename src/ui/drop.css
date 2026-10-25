@@ -1,0 +1,55 @@
+@utility drop {
+  [data-hand] {
+    animation: drop-float 4800ms ease-in-out infinite paused;
+  }
+
+  [data-card] {
+    transform-origin: 50% 220%;
+    transition: rotate 500ms var(--default-transition-timing-function);
+  }
+
+  [data-card="left"] {
+    --sway: -2deg;
+    rotate: -4deg;
+    animation: drop-sway 3600ms ease-in-out infinite paused;
+  }
+
+  [data-card="right"] {
+    --sway: 2deg;
+    rotate: 4deg;
+    animation: drop-sway 3600ms ease-in-out 1800ms infinite paused;
+  }
+
+  &[data-open] [data-hand],
+  &[data-open] [data-card] {
+    animation-play-state: running;
+  }
+
+  &[data-open] [data-card="left"] {
+    rotate: -10deg;
+  }
+
+  &[data-open] [data-card="right"] {
+    rotate: 10deg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-hand],
+    [data-card] {
+      animation: none;
+      transition: none;
+    }
+  }
+}
+
+@keyframes drop-float {
+  50% {
+    translate: 0 -3px;
+  }
+}
+
+@keyframes drop-sway {
+  50% {
+    transform: rotate(var(--sway)) translateY(-2px);
+  }
+}

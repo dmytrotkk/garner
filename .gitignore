@@ -1,0 +1,11 @@
+/node_modules
+/dist
+/data
+/.tanstack
+.env*
+.DS_Store
+/src-tauri/target
+/src-tauri/gen
+/cards
+/sample-data
+/CLAUDE.md

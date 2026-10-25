@@ -1,0 +1,18 @@
+.chart .recharts-surface,
+.chart .recharts-layer,
+.chart .recharts-sector {
+  outline: none;
+}
+
+.chart .recharts-tooltip-wrapper {
+  z-index: 10;
+}
+
+.chart .recharts-tooltip-cursor {
+  stroke: var(--color-shade);
+}
+
+.chart .recharts-cartesian-axis-tick-value {
+  fill: var(--color-faint);
+  font-size: var(--text-mark);
+}

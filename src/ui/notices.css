@@ -1,0 +1,26 @@
+@utility fold {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 250ms var(--default-transition-timing-function),
+    opacity 250ms var(--default-transition-timing-function),
+    translate 250ms var(--default-transition-timing-function);
+
+  > * {
+    min-height: 0;
+  }
+
+  &[data-shown="false"] {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    translate: 0 8px;
+
+    > * {
+      overflow: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}

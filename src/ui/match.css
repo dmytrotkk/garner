@@ -1,0 +1,70 @@
+@utility match {
+  --match-cycle: 3000ms;
+
+  [data-hit] {
+    opacity: 0.35;
+    animation: match-hit var(--match-cycle) ease-in-out infinite;
+  }
+
+  [data-tick] {
+    opacity: 0;
+    animation: match-tick var(--match-cycle) cubic-bezier(0.2, 0, 0, 1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-hit] {
+      animation: none;
+      opacity: 1;
+    }
+
+    [data-tick] {
+      animation: none;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes match-hit {
+  0%,
+  25% {
+    opacity: 0.35;
+    scale: 1;
+  }
+  40%,
+  50% {
+    opacity: 1;
+    scale: 1.08;
+  }
+  60%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  94%,
+  100% {
+    opacity: 0.35;
+    scale: 1;
+  }
+}
+
+@keyframes match-tick {
+  0%,
+  55% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  64% {
+    opacity: 1;
+    scale: 1.15;
+  }
+  70%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  94%,
+  100% {
+    opacity: 0;
+    scale: 0.5;
+  }
+}

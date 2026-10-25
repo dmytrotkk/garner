@@ -1,0 +1,102 @@
+@layer base {
+  :root {
+    --hue-red: oklch(0.66 0.24 24);
+    --hue-orange: oklch(0.72 0.22 52);
+    --hue-amber: oklch(0.79 0.21 78);
+    --hue-yellow: oklch(0.84 0.22 95);
+    --hue-lime: oklch(0.8 0.24 130);
+    --hue-green: oklch(0.72 0.23 152);
+    --hue-mint: oklch(0.75 0.19 168);
+    --hue-teal: oklch(0.73 0.17 188);
+    --hue-cyan: oklch(0.73 0.18 218);
+    --hue-blue: oklch(0.66 0.21 252);
+    --hue-indigo: oklch(0.6 0.23 276);
+    --hue-purple: oklch(0.64 0.24 300);
+    --hue-pink: oklch(0.69 0.23 345);
+    --hue-rose: oklch(0.67 0.23 10);
+    --hue-brown: oklch(0.62 0.08 60);
+    --hue-brass: oklch(0.74 0.13 88);
+    --hue-gray: oklch(0.64 0.015 260);
+  }
+  [data-hue="red"] {
+    --hue: var(--hue-red);
+  }
+  [data-hue="orange"] {
+    --hue: var(--hue-orange);
+  }
+  [data-hue="amber"] {
+    --hue: var(--hue-amber);
+  }
+  [data-hue="yellow"] {
+    --hue: var(--hue-yellow);
+  }
+  [data-hue="lime"] {
+    --hue: var(--hue-lime);
+  }
+  [data-hue="green"] {
+    --hue: var(--hue-green);
+  }
+  [data-hue="mint"] {
+    --hue: var(--hue-mint);
+  }
+  [data-hue="teal"] {
+    --hue: var(--hue-teal);
+  }
+  [data-hue="cyan"] {
+    --hue: var(--hue-cyan);
+  }
+  [data-hue="blue"] {
+    --hue: var(--hue-blue);
+  }
+  [data-hue="indigo"] {
+    --hue: var(--hue-indigo);
+  }
+  [data-hue="purple"] {
+    --hue: var(--hue-purple);
+  }
+  [data-hue="pink"] {
+    --hue: var(--hue-pink);
+  }
+  [data-hue="rose"] {
+    --hue: var(--hue-rose);
+  }
+  [data-hue="brown"] {
+    --hue: var(--hue-brown);
+  }
+  [data-hue="brass"] {
+    --hue: var(--hue-brass);
+  }
+  [data-hue="gray"] {
+    --hue: var(--hue-gray);
+  }
+  [data-hue] {
+    --tile-from: oklch(from var(--hue) calc(l + 0.08) calc(c * 0.9) calc(h - 20));
+    --tile-to: oklch(from var(--hue) calc(l - 0.06) calc(c * 0.9) calc(h + 20));
+  }
+}
+
+@property --hue {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(0.6 0 0);
+}
+
+@utility bg-tile-solid {
+  background-image: linear-gradient(to bottom right, var(--tile-from), var(--tile-to));
+  color: oklch(1 0 0 / 0.9);
+}
+
+@utility bg-tile {
+  background-image: linear-gradient(
+    to bottom right,
+    oklch(from var(--tile-from) l c h / 0.2),
+    oklch(from var(--tile-to) l c h / 0.2)
+  );
+}
+
+@utility text-tile {
+  color: light-dark(
+    oklch(from var(--hue) 0.56 calc(c / 2 + 0.02) h),
+    oklch(from var(--hue) 0.7 calc(c / 2 + 0.02) h)
+  );
+}

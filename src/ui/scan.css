@@ -1,0 +1,329 @@
+@utility scan {
+  --scan-cycle: 3600ms;
+
+  [data-beam] {
+    opacity: 0;
+    box-shadow: 0 0 8px 2px oklch(from var(--hue) l c h / 0.5);
+    animation:
+      scan-beam var(--scan-cycle) linear infinite,
+      scan-hue var(--scan-cycle) linear infinite;
+  }
+
+  [data-ink] {
+    opacity: 0;
+    scale: 0.4;
+    animation: scan-pop-1 var(--scan-cycle) cubic-bezier(0.2, 0, 0, 1) infinite;
+  }
+
+  [data-line] {
+    animation: scan-line-1 var(--scan-cycle) cubic-bezier(0.2, 0, 0, 1) infinite;
+  }
+
+  [data-row]:nth-child(2) [data-ink] {
+    animation-name: scan-pop-2;
+  }
+
+  [data-row]:nth-child(2) [data-line] {
+    animation-name: scan-line-2;
+  }
+
+  [data-row]:nth-child(3) [data-ink] {
+    animation-name: scan-pop-3;
+  }
+
+  [data-row]:nth-child(3) [data-line] {
+    animation-name: scan-line-3;
+  }
+
+  [data-row]:nth-child(4) [data-ink] {
+    animation-name: scan-pop-4;
+  }
+
+  [data-row]:nth-child(4) [data-line] {
+    animation-name: scan-line-4;
+  }
+
+  [data-row]:nth-child(5) [data-ink] {
+    animation-name: scan-pop-5;
+  }
+
+  [data-row]:nth-child(5) [data-line] {
+    animation-name: scan-line-5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-beam] {
+      animation: none;
+    }
+
+    [data-ink] {
+      animation: none;
+      opacity: 1;
+      scale: 1;
+    }
+
+    [data-line] {
+      animation: none;
+      background-color: oklch(from var(--hue) l c h / 0.3);
+    }
+  }
+}
+
+@keyframes scan-beam {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  60% {
+    top: calc(100% + 2px);
+    opacity: 1;
+  }
+  66%,
+  100% {
+    top: calc(100% + 2px);
+    opacity: 0;
+  }
+}
+
+@keyframes scan-hue {
+  0%,
+  6% {
+    --hue: var(--hue-lime);
+  }
+  18% {
+    --hue: var(--hue-orange);
+  }
+  30% {
+    --hue: var(--hue-blue);
+  }
+  42% {
+    --hue: var(--hue-rose);
+  }
+  54%,
+  100% {
+    --hue: var(--hue-teal);
+  }
+}
+
+@keyframes scan-pop-1 {
+  0%,
+  6% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  10% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  16%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes scan-line-1 {
+  0%,
+  6% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+  10% {
+    background-color: oklch(from var(--hue) l c h / 0.6);
+    scale: 1.04;
+  }
+  16%,
+  84% {
+    background-color: oklch(from var(--hue) l c h / 0.3);
+    scale: 1;
+  }
+  92%,
+  100% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+}
+
+@keyframes scan-pop-2 {
+  0%,
+  18% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  22% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  28%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes scan-line-2 {
+  0%,
+  18% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+  22% {
+    background-color: oklch(from var(--hue) l c h / 0.6);
+    scale: 1.04;
+  }
+  28%,
+  84% {
+    background-color: oklch(from var(--hue) l c h / 0.3);
+    scale: 1;
+  }
+  92%,
+  100% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+}
+
+@keyframes scan-pop-3 {
+  0%,
+  30% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  34% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  40%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes scan-line-3 {
+  0%,
+  30% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+  34% {
+    background-color: oklch(from var(--hue) l c h / 0.6);
+    scale: 1.04;
+  }
+  40%,
+  84% {
+    background-color: oklch(from var(--hue) l c h / 0.3);
+    scale: 1;
+  }
+  92%,
+  100% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+}
+
+@keyframes scan-pop-4 {
+  0%,
+  42% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  46% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  52%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes scan-line-4 {
+  0%,
+  42% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+  46% {
+    background-color: oklch(from var(--hue) l c h / 0.6);
+    scale: 1.04;
+  }
+  52%,
+  84% {
+    background-color: oklch(from var(--hue) l c h / 0.3);
+    scale: 1;
+  }
+  92%,
+  100% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+}
+
+@keyframes scan-pop-5 {
+  0%,
+  54% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  58% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  64%,
+  84% {
+    opacity: 1;
+    scale: 1;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes scan-line-5 {
+  0%,
+  54% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+  58% {
+    background-color: oklch(from var(--hue) l c h / 0.6);
+    scale: 1.04;
+  }
+  64%,
+  84% {
+    background-color: oklch(from var(--hue) l c h / 0.3);
+    scale: 1;
+  }
+  92%,
+  100% {
+    background-color: var(--color-fill);
+    scale: 1;
+  }
+}

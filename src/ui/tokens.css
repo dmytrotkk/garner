@@ -1,0 +1,136 @@
+@import "tailwindcss" source("..");
+@import "./charts/charts.css";
+@import "./hues.css";
+@import "./glass.css";
+@import "./mesh-card.css";
+@import "./scan.css";
+@import "./match.css";
+@import "./notices.css";
+@import "./drop.css";
+@import "./update.css";
+
+@utility fluid {
+  transition-property: width, background-color, color, border-color;
+  transition-duration: 200ms;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0ms;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+}
+
+@theme {
+  --*: initial;
+  --spacing: 0.25rem;
+
+  --color-canvas: light-dark(#f6f6f6, #1e1e1e);
+  --color-sidebar: light-dark(#efefef, #282828);
+  --color-surface: light-dark(#fdfdfd, #252525);
+  --color-field: light-dark(#fdfdfd, #161616);
+  --color-knob: light-dark(#fdfdfd, rgb(255 255 255 / 0.85));
+  --color-fill: light-dark(rgb(0 0 0 / 0.06), rgb(255 255 255 / 0.078));
+  --color-line: light-dark(#e6e6e6, rgb(255 255 255 / 0.098));
+  --color-ink: light-dark(#141414, #dedede);
+  --color-dim: light-dark(#505050, #9d9d9d);
+  --color-faint: light-dark(#777777, #8e8e8e);
+  --color-positive: light-dark(#009b56, #51cb83);
+  --color-warning: light-dark(#c27c0e, #e9a044);
+  --color-negative: light-dark(#d4342c, #f45448);
+  --color-scrim: light-dark(rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.4));
+  --color-shade: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.2));
+
+  --default-font-family: system-ui, sans-serif;
+  --default-mono-font-family: var(--default-font-family);
+
+  --text-mark: 10px;
+  --text-mark--line-height: 12px;
+  --text-caption: 11px;
+  --text-caption--line-height: 16px;
+  --text-body: 13px;
+  --text-body--line-height: 20px;
+  --text-nav: 14px;
+  --text-nav--line-height: 20px;
+  --text-heading: 20px;
+  --text-heading--line-height: 28px;
+  --text-title: 24px;
+  --text-title--line-height: 32px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  --radius-chip: 4px;
+  --radius-control: 8px;
+  --radius-surface: 12px;
+  --radius-tile: 30%;
+  --radius-glass: 16px;
+  --radius-sheet: 20px;
+
+  --shadow-popover: 0 4px 16px light-dark(rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.36));
+  --shadow-sheet: 0 24px 64px -16px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.6));
+
+  --blur-mask: 6px;
+  --blur-glass: 24px;
+  --blur-veil: 2px;
+  --blur-bar: 8px;
+
+  --animate-reveal: reveal 900ms cubic-bezier(0.2, 0, 0, 1) both;
+
+  @keyframes reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  --default-transition-duration: 120ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+
+  html {
+    @apply overscroll-none;
+  }
+
+  button {
+    @apply select-none;
+  }
+
+  a,
+  img {
+    -webkit-user-drag: none;
+  }
+
+  a:any-link {
+    cursor: default;
+  }
+
+  a[target="_blank"] {
+    cursor: pointer;
+  }
+
+  body {
+    @apply bg-canvas text-body text-ink antialiased in-data-desktop:bg-transparent;
+    font-variant-numeric: tabular-nums;
+    font-synthesis: none;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-shade) transparent;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ink;
+  }
+}

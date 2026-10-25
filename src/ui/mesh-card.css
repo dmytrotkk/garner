@@ -1,0 +1,22 @@
+@utility tilt {
+  transform: perspective(900px) rotateX(calc((0.5 - var(--y, 0.5)) * 14deg))
+    rotateY(calc((var(--x, 0.5) - 0.5) * 18deg));
+  transition: transform 500ms var(--default-transition-timing-function);
+}
+
+@utility glare {
+  background-image: radial-gradient(
+    ellipse 80% 110% at calc(var(--x, 0.5) * 100%) calc(var(--y, 0.5) * 100%),
+    oklch(1 0 0 / 0.16),
+    transparent 70%
+  );
+}
+
+@utility etched {
+  color: oklch(1 0 0 / 0.75);
+  mix-blend-mode: overlay;
+}
+
+@utility clip-surface {
+  clip-path: inset(0 round calc(var(--radius-surface) - 1px));
+}

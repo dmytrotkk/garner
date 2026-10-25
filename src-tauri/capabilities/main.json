@@ -1,0 +1,18 @@
+{
+  "identifier": "main",
+  "windows": ["main"],
+  "permissions": [
+    "core:window:allow-start-dragging",
+    "core:window:allow-internal-toggle-maximize",
+    "core:window:allow-show",
+    "core:window:allow-set-focus",
+    "core:window:allow-unminimize",
+    "core:menu:allow-new",
+    "core:menu:allow-set-as-app-menu",
+    "core:menu:allow-set-as-windows-menu-for-nsapp",
+    "core:menu:allow-set-as-help-menu-for-nsapp",
+    "core:menu:allow-set-text",
+    "core:menu:allow-set-enabled",
+    "core:resources:allow-close"
+  ]
+}
