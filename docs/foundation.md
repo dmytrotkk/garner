@@ -126,8 +126,8 @@ brand/                 source art: the mark (svg), the tile exported from Icon C
 public/                favicons generated from brand/icon.png with magick, the same tile in both modes
 scripts/credits.ts     writes src-tauri/target/Credits.rtf for the About panel: cargo-about's crate licenses, the npm licenses of everything the page bundles, the vendored notices; run by bun run desktop:build
 README.md              what garner is and how to run it
-LICENSE                MIT, Dmytro, 2026
-LICENSE-*              notices of code and marks garner carries: EvilCharts (charts), Web3 Icons (marks)
+LICENSE                MIT, Dmytro Tkachuk, 2026
+LICENSE-*              notices of code and marks garner carries: EvilCharts (charts), flag-icons (currency flags), Web3 Icons (marks)
 CHANGELOG.md           release notes, one section per version
 ```
 
