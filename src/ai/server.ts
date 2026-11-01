@@ -2,7 +2,6 @@ import {
   EXTENSION_ID,
   getUiCapability,
   RESOURCE_MIME_TYPE,
-  registerAppResource,
 } from '@modelcontextprotocol/ext-apps/server'
 import {
   CLIENT_CAPABILITIES_META_KEY,
@@ -75,7 +74,11 @@ export async function server(ctx: Context, sources: Sources, changed: () => void
         const app = apps[tool.name]
         const envelope: Envelope | undefined = mcpReq.envelope
         const client = envelope?.[CLIENT_CAPABILITIES_META_KEY]
-        const rendered = app && getUiCapability(client ?? server.server.getClientCapabilities())
+        const rendered =
+          app &&
+          getUiCapability(client ?? server.server.getClientCapabilities())?.mimeTypes?.includes(
+            RESOURCE_MIME_TYPE,
+          )
         return {
           content: [
             {
@@ -92,8 +95,11 @@ export async function server(ctx: Context, sources: Sources, changed: () => void
     )
   }
   for (const [name, { uri, html }] of cards)
-    registerAppResource(server, name, uri, { mimeType: RESOURCE_MIME_TYPE }, async () => ({
-      contents: [{ uri, mimeType: RESOURCE_MIME_TYPE, text: html }],
-    }))
+    server.registerResource(
+      name,
+      uri,
+      { mimeType: RESOURCE_MIME_TYPE, cacheHint: { ttlMs: 86_400_000, cacheScope: 'private' } },
+      async () => ({ contents: [{ uri, mimeType: RESOURCE_MIME_TYPE, text: html }] }),
+    )
   return server
 }

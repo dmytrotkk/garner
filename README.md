@@ -44,7 +44,7 @@ bun dev
 `bun dev` serves the browser build on `localhost:5173`, for development. For the desktop app, install the Tauri CLI once, then run it:
 
 ```sh
-cargo install tauri-cli --version 2.12.2 --locked
+cargo install tauri-cli --version 2.12.4 --locked
 bun run desktop
 ```
 

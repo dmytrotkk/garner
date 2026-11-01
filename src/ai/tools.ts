@@ -16,10 +16,10 @@ type Annotations = {
   readOnlyHint?: true
   destructiveHint?: boolean
   idempotentHint?: true
-  openWorldHint?: false
+  openWorldHint?: boolean
 }
 
-const additive = { destructiveHint: false, openWorldHint: false } as const
+const additive = { destructiveHint: false } as const
 
 type Tool = {
   name: string
@@ -41,7 +41,7 @@ type Definition<Shape extends z.ZodRawShape, Out> = {
 
 const tool = <Shape extends z.ZodRawShape, Out>(definition: Definition<Shape, Out>): Tool => ({
   ...definition,
-  annotations: definition.annotations ?? {},
+  annotations: { openWorldHint: false, ...definition.annotations },
   run: async (ctx, raw) =>
     definition.output.parse(await definition.run(ctx, definition.input.parse(raw))),
 })
@@ -136,7 +136,7 @@ export const tools: readonly Tool[] = [
   tool({
     name: 'settings',
     description: 'Display currency and privacy mode.',
-    input: z.object({}),
+    input: z.strictObject({}),
     output: Settings,
     annotations: { readOnlyHint: true },
     run: ({ db }) => settings(db),
@@ -202,7 +202,7 @@ export const tools: readonly Tool[] = [
     description: 'Change the display currency or privacy mode.',
     input: Settings.partial(),
     output: Settings,
-    annotations: { idempotentHint: true },
+    annotations: { idempotentHint: true, openWorldHint: true },
     run: async ({ db, fetch }, { currency, privacy }) => {
       if (privacy !== undefined) await db.write(setSetting('privacy', privacy))
       if (currency !== undefined) await setCurrency(db, fetch, currency)
@@ -212,8 +212,9 @@ export const tools: readonly Tool[] = [
   tool({
     name: 'sync',
     description: 'Fetch current balances and prices for every account.',
-    input: z.object({}),
+    input: z.strictObject({}),
     output: z.object({ syncedAt: z.number().nullable() }),
+    annotations: { openWorldHint: true },
     run: async ({ db, fetch }) => {
       await sync(db, fetch)
       return { syncedAt: (await settings(db)).syncedAt }

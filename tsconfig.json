@@ -7,7 +7,8 @@
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true
+    "exactOptionalPropertyTypes": true,
+    "erasableSyntaxOnly": true
   },
-  "include": ["src", "host", "vite.config.ts", "vite.apps.config.ts"]
+  "include": ["src", "host", "scripts", "vite.config.ts", "vite.apps.config.ts"]
 }

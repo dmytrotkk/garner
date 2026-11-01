@@ -1,6 +1,10 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { json, text } from 'node:stream/consumers'
-import { createMcpHandler } from '@modelcontextprotocol/server'
+import {
+  createMcpHandler,
+  localhostAllowedOrigins,
+  originValidationResponse,
+} from '@modelcontextprotocol/server'
 import type { Plugin } from 'vite'
 import { server as mcp } from '../src/ai/server'
 import { createDb } from '../src/data/db'
@@ -60,9 +64,10 @@ export function host(): Plugin {
         }
         if (path.startsWith('/mcp/')) {
           if (path.split('/')[2] !== token) return fail(401)
-          const response = await handler.fetch(
-            await toRequest(req, `http://${req.headers.host}${path}`),
-          )
+          const request = await toRequest(req, `http://${req.headers.host}${path}`)
+          const response =
+            originValidationResponse(request, localhostAllowedOrigins()) ??
+            (await handler.fetch(request))
           res.writeHead(response.status, Object.fromEntries(response.headers))
           return res.end(await response.bytes())
         }

@@ -53,9 +53,8 @@ fn rows(connection: &Connection, statement: &Statement) -> rusqlite::Result<Vec<
     let mut cursor = prepared.query(params_from_iter(&statement.params))?;
     let mut found = Vec::new();
     while let Some(row) = cursor.next()? {
-        let names = row.as_ref().column_names();
         let mut record = Row::new();
-        for (index, name) in names.into_iter().enumerate() {
+        for (index, name) in row.as_ref().column_names().enumerate() {
             let value = match row.get_ref(index)? {
                 ValueRef::Null => Json::Null,
                 ValueRef::Integer(value) => value.into(),

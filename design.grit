@@ -5,6 +5,6 @@ or {
   JsStringLiteralExpression(),
   JsTemplateChunkElement()
 } as $class where {
-  $class <: r"(?s).*(?:rounded\S*-(?:full|none)|bg-(?:linear|radial|conic)).*",
+  $class <: r"(?s).*(?:rounded\S*-(?:full|none)|bg-(?:linear|radial|conic|gradient)|\S/\[).*",
   register_diagnostic(span=$class, message="Outside the design tokens, see docs/design.md", severity="error")
 }

@@ -18,10 +18,6 @@
   }
 }
 
-@utility scrollbar-none {
-  scrollbar-width: none;
-}
-
 @theme {
   --*: initial;
   --spacing: 0.25rem;

@@ -1,5 +1,4 @@
-import { useApp } from '@modelcontextprotocol/ext-apps/react'
-import { useState } from 'react'
+import { App } from '@modelcontextprotocol/ext-apps'
 import { createRoot } from 'react-dom/client'
 import type { Portfolio } from '../ai/tools'
 import { dash, money, quantity } from '../core/format'
@@ -42,22 +41,13 @@ function View({ total, institutions, holdings, display }: Portfolio) {
   )
 }
 
-function App() {
-  const [portfolio, setPortfolio] = useState<Portfolio>()
-  useApp({
-    appInfo: { name: 'garner', version: '1' },
-    capabilities: {},
-    onAppCreated: (app) => {
-      app.ontoolresult = ({ structuredContent, _meta }) => {
-        const icons = (_meta as { icons?: Record<string, string> } | undefined)?.icons ?? {}
-        provideIcons(async (id) => icons[id] ?? null)
-        setPortfolio(structuredContent as Portfolio)
-      }
-    },
-  })
-  return portfolio ? <View {...portfolio} /> : null
-}
-
 const root = document.getElementById('root')
 if (!root) throw new Error('missing #root')
-createRoot(root).render(<App />)
+const view = createRoot(root)
+const app = new App({ name: 'garner', version: '1' })
+app.addEventListener('toolresult', ({ structuredContent, _meta }) => {
+  const icons = (_meta as { icons?: Record<string, string> } | undefined)?.icons ?? {}
+  provideIcons(async (id) => icons[id] ?? null)
+  view.render(<View {...(structuredContent as Portfolio)} />)
+})
+await app.connect()

@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!src/routeTree.gen.ts", "!**/*.svg", "!src-tauri/icons"]
+    "includes": ["**", "!src/routeTree.gen.ts", "!**/*.svg", "!src-tauri/icons", "!**/*.md"]
   },
   "formatter": {
     "indentStyle": "space",
@@ -14,9 +14,11 @@
   },
   "linter": {
     "rules": {
-      "nursery": {
-        "noTailwindArbitraryValue": "error",
+      "style": {
         "noInlineStyles": "error"
+      },
+      "nursery": {
+        "noTailwindArbitraryValue": "error"
       }
     }
   },
