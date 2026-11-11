@@ -1,8 +1,8 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import type { Assignment, Movement } from './ledger'
-import { holds, literal, parse, reading } from './query'
-import type { CategoryType, Day } from './schema'
+import type { Assignment, Movement } from './ledger.ts'
+import { holds, literal, parse, reading } from './query.ts'
+import type { CategoryType, Day } from './schema.ts'
 
 const today: Day = '2026-10-20'
 const read = (input: string) => reading(parse(input, today))

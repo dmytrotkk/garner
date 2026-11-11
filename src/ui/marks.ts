@@ -1,4 +1,4 @@
-import type { Mark } from './glyph'
+import type { Mark } from './glyph.tsx'
 
 const loose = '-1 -1 26 26'
 const tight = '2.25 2.25 19.5 19.5'

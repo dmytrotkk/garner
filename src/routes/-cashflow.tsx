@@ -10,20 +10,20 @@ import {
   type Ref,
   type Scope,
   shift,
-} from '../data/cashflow'
-import type { Movement } from '../data/ledger'
-import { named } from '../data/query'
-import { dayOf } from '../data/schema'
-import type { Valuation } from '../data/spending'
-import { Button } from '../ui/button'
-import type { Item } from '../ui/charts/frame'
-import { type Node, SankeyChart } from '../ui/charts/sankey'
-import { color, type Hue } from '../ui/hues'
-import { Icon } from '../ui/icon'
-import { Segmented } from '../ui/segmented'
-import { hues } from './-categories'
-import { root } from './-data'
-import { Money, useCompact } from './-money'
+} from '../data/cashflow.ts'
+import type { Movement } from '../data/ledger.ts'
+import { named } from '../data/query.ts'
+import { dayOf } from '../data/schema.ts'
+import type { Valuation } from '../data/spending.ts'
+import { Button } from '../ui/button.tsx'
+import type { Item } from '../ui/charts/frame.tsx'
+import { type Node, SankeyChart } from '../ui/charts/sankey.tsx'
+import { color, type Hue } from '../ui/hues.ts'
+import { Icon } from '../ui/icon.tsx'
+import { Segmented } from '../ui/segmented.tsx'
+import { hues } from './-categories.tsx'
+import { root } from './-data.ts'
+import { Money, useCompact } from './-money.tsx'
 
 type Props = { rows: readonly Movement[]; context: Valuation; scope: Scope; initial: Range }
 

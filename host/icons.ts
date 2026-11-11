@@ -1,4 +1,4 @@
-import type { Icon } from '../src/data/host'
+import type { Icon } from '../src/data/host.ts'
 
 const deployment = /^\d+\/0x[0-9a-f]{40}$/i
 

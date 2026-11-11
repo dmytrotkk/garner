@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { activobank } from './activobank'
-import { santander } from './santander'
+import { activobank } from './activobank.ts'
+import { santander } from './santander.ts'
 
 const header = 'Data Lanc.\tData Valor\tDescrição\tValor\tSaldo'
 const preamble = [

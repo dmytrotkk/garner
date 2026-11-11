@@ -1,10 +1,10 @@
-import { store } from '../core/store'
-import type { Assignable, CategoryRow, MerchantRow, RuleRow } from '../data/categories'
-import type { Proposal } from '../data/flows'
-import type { Identity, Movement, MovementKey } from '../data/ledger'
-import type { AccountView, InstitutionView, Position } from '../data/portfolio'
-import type { Account, Institution, ManualAccount } from '../data/schema'
-import type { LegKey } from '../data/transfers'
+import { store } from '../core/store.ts'
+import type { Assignable, CategoryRow, MerchantRow, RuleRow } from '../data/categories.ts'
+import type { Proposal } from '../data/flows.ts'
+import type { Identity, Movement, MovementKey } from '../data/ledger.ts'
+import type { AccountView, InstitutionView, Position } from '../data/portfolio.ts'
+import type { Account, Institution, ManualAccount } from '../data/schema.ts'
+import type { LegKey } from '../data/transfers.ts'
 
 export type ManualView = Extract<AccountView, { kind: 'manual' }>
 

@@ -1,12 +1,13 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import type { Position } from '../data/portfolio'
-import { Page, Section, Stat } from '../ui/page'
-import { type Column, Label, Table } from '../ui/table'
-import { TokenIcon } from '../ui/token'
-import { holdingCommands } from './-commands'
-import { root } from './-data'
-import { chain, placed } from './-holdings'
-import { Amount, Money } from './-money'
+import type { Position } from '../data/portfolio.ts'
+import { type Column, Label } from '../ui/grid.tsx'
+import { Page, Section, Stat } from '../ui/page.tsx'
+import { Table } from '../ui/table.tsx'
+import { TokenIcon } from '../ui/token.tsx'
+import { holdingCommands } from './-commands.tsx'
+import { root } from './-data.ts'
+import { chain, placed } from './-holdings.tsx'
+import { Amount, Money } from './-money.tsx'
 
 export const Route = createFileRoute('/assets/$assetId')({
   loader: async ({ params, parentMatchPromise }) => {

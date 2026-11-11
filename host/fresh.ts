@@ -1,9 +1,9 @@
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { createDb } from '../src/data/db'
-import { type Address, type AssetId, type Day, migrations } from '../src/data/schema'
-import { sqlite } from './sqlite'
+import { createDb } from '../src/data/db.ts'
+import { type Address, type AssetId, type Day, migrations } from '../src/data/schema.ts'
+import { sqlite } from './sqlite.ts'
 
 const dir = mkdtempSync(join(tmpdir(), 'garner-'))
 process.on('exit', () => rmSync(dir, { recursive: true }))
@@ -16,7 +16,7 @@ export async function migrated() {
   return db
 }
 
-export { coin } from '../src/data/schema'
+export { coin } from '../src/data/schema.ts'
 
 export const institution = (id: string, name = id) => ({ id, name, updatedAt: 1 })
 

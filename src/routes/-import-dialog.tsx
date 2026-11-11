@@ -1,14 +1,22 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
-import { date, plural, quantity } from '../core/format'
-import { applyImport, type Blocked, type Line, type Plan, read, type Target } from '../data/imports'
-import { open as decode } from '../data/statement'
-import { Button } from '../ui/button'
-import { Dialog } from '../ui/dialog'
-import { Picker } from '../ui/picker'
-import { type Column, Label, Table } from '../ui/table'
-import { root } from './-data'
-import { next } from './-import'
-import { code, sum } from './-money'
+import { date, plural, quantity } from '../core/format.ts'
+import {
+  applyImport,
+  type Blocked,
+  type Line,
+  type Plan,
+  read,
+  type Target,
+} from '../data/imports.ts'
+import { open as decode } from '../data/statement.ts'
+import { Button } from '../ui/button.tsx'
+import { Dialog } from '../ui/dialog.tsx'
+import { type Column, Label } from '../ui/grid.tsx'
+import { Picker } from '../ui/picker.tsx'
+import { Table } from '../ui/table.tsx'
+import { root } from './-data.ts'
+import { next } from './-import.ts'
+import { code, sum } from './-money.tsx'
 
 function reason(blocked: Blocked) {
   switch (blocked.reason) {

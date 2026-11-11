@@ -1,9 +1,9 @@
 import { expect, test } from 'bun:test'
-import { account, coin, held, institution, migrated, moved } from '../../host/fresh'
-import { history } from './history'
-import { portfolio } from './portfolio'
-import { type CanonicalId, type Day, q } from './schema'
-import { setSetting } from './settings'
+import { account, coin, held, institution, migrated, moved } from '../../host/fresh.ts'
+import { history } from './history.ts'
+import { portfolio } from './portfolio.ts'
+import { type CanonicalId, type Day, q } from './schema.ts'
+import { setSetting } from './settings.ts'
 
 const eth = coin('coingecko:ethereum', 'ETH')
 const usdc = coin('coingecko:usd-coin', 'USDC')

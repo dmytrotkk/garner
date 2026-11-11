@@ -1,10 +1,10 @@
 import { sql } from 'kysely'
-import { uuidv7 } from '../core/id'
-import type { Db } from './db'
-import { type Coverage, fold } from './ledger'
-import { activobank } from './parsers/activobank'
-import { revolut } from './parsers/revolut'
-import { santander } from './parsers/santander'
+import { uuidv7 } from '../core/id.ts'
+import type { Db } from './db.ts'
+import { type Coverage, fold } from './ledger.ts'
+import { activobank } from './parsers/activobank.ts'
+import { revolut } from './parsers/revolut.ts'
+import { santander } from './parsers/santander.ts'
 import {
   addAssets,
   type Balance,
@@ -14,10 +14,10 @@ import {
   type Entry,
   type Import,
   q,
-} from './schema'
-import { fiat } from './settings'
-import { type Doc, type Parser, type Statement, view } from './statement'
-import { legKey } from './transfers'
+} from './schema.ts'
+import { fiat } from './settings.ts'
+import { type Doc, type Parser, type Statement, view } from './statement.ts'
+import { legKey } from './transfers.ts'
 
 export const parsers: readonly Parser[] = [revolut, santander, activobank]
 const currencies = new Set(Intl.supportedValuesOf('currency'))

@@ -1,4 +1,4 @@
-import { table } from './table'
+import { table } from './table.ts'
 
 export const activobank = table({
   id: 'activobank',

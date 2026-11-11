@@ -1,4 +1,4 @@
-import { store } from '../core/store'
+import { store } from '../core/store.ts'
 
 export type Dismissal = { state: 'shown' } | { state: 'closed'; at: number }
 

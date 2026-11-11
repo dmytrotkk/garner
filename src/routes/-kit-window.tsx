@@ -1,9 +1,9 @@
 import { EthereumIcon, Home03Icon, SidebarLeftIcon } from '@hugeicons/core-free-icons'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Card } from '../ui/card'
-import { Glass, type GlassItem, GlassSearch } from '../ui/glass'
-import { Icon } from '../ui/icon'
-import { Section } from '../ui/page'
+import { Card } from '../ui/card.tsx'
+import { Glass, type GlassItem, GlassSearch } from '../ui/glass.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { Section } from '../ui/page.tsx'
 
 const noop = () => {}
 
@@ -20,25 +20,17 @@ const history: readonly GlassItem[] = [
 ]
 
 const lit = [
-  ['#f8766c', '#c9271f'],
-  ['#fdc630', '#c98a00'],
-  ['#7bd254', '#2f8f14'],
+  { cx: 7, fill: '#f8766c', stroke: '#c9271f' },
+  { cx: 30, fill: '#fdc630', stroke: '#c98a00' },
+  { cx: 53, fill: '#7bd254', stroke: '#2f8f14' },
 ]
-const unlit = Array<string[]>(3).fill(['#e6e7ea', '#a5a6aa'])
+const unlit = lit.map(({ cx }) => ({ cx, fill: '#e6e7ea', stroke: '#a5a6aa' }))
 
 function Lights({ inactive }: { inactive: boolean }) {
   return (
     <svg width={60} height={14} aria-hidden="true" className="shrink-0">
-      {(inactive ? unlit : lit).map(([fill, stroke], index) => (
-        <circle
-          key={7 + index * 23}
-          cx={7 + index * 23}
-          cy={7}
-          r={6.75}
-          fill={fill}
-          stroke={stroke}
-          strokeWidth={0.5}
-        />
+      {(inactive ? unlit : lit).map(({ cx, fill, stroke }) => (
+        <circle key={cx} cx={cx} cy={7} r={6.75} fill={fill} stroke={stroke} strokeWidth={0.5} />
       ))}
     </svg>
   )

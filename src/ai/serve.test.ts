@@ -1,8 +1,8 @@
 import { expect, spyOn, test } from 'bun:test'
-import { migrated } from '../../host/fresh'
-import type { Frame, Relay } from '../data/host'
-import { serve } from './serve'
-import { server } from './server'
+import { migrated } from '../../host/fresh.ts'
+import type { Frame, Relay } from '../data/host.ts'
+import { serve } from './serve.ts'
+import { server } from './server.ts'
 
 type Tool = { name: string; _meta?: { ui?: { resourceUri: string } } }
 type Result = Record<string, unknown> & { tools?: Tool[]; content?: { text: string }[] }

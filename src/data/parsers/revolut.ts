@@ -1,4 +1,4 @@
-import type { Kind } from '../schema'
+import type { Kind } from '../schema.ts'
 import {
   cells,
   chain,
@@ -9,7 +9,7 @@ import {
   type Parser,
   reader,
   type Skip,
-} from '../statement'
+} from '../statement.ts'
 
 const header =
   'type,product,started date,completed date,description,amount,fee,currency,state,balance'

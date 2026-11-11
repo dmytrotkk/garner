@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { migrated } from '../../host/fresh'
-import { q } from '../data/schema'
-import { mask, unmask } from './mask'
+import { migrated } from '../../host/fresh.ts'
+import { q } from '../data/schema.ts'
+import { mask, unmask } from './mask.ts'
 
 const vitalik = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045'
 const other = '0x71c7656ec7ab88b098defb751b7401b5f6d8976f'

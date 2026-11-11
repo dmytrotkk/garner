@@ -1,8 +1,8 @@
-import { units } from '../core/format'
-import { categories } from './categories'
-import type { Db } from './db'
-import { carry, prices } from './history'
-import type { Movement } from './ledger'
+import { units } from '../core/format.ts'
+import { categories } from './categories.ts'
+import type { Db } from './db.ts'
+import { carry, prices } from './history.ts'
+import type { Movement } from './ledger.ts'
 import {
   type AssetId,
   type CanonicalId,
@@ -12,8 +12,8 @@ import {
   monthOf,
   type Price,
   scale,
-} from './schema'
-import { type Currency, settings } from './settings'
+} from './schema.ts'
+import { type Currency, settings } from './settings.ts'
 
 export type Valuation = {
   currency: Currency

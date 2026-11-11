@@ -1,9 +1,9 @@
 import { BaseError, ContractFunctionExecutionError, createClient, custom, erc20Abi } from 'viem'
 import { getBalance, multicall } from 'viem/actions'
 import { arbitrum, avalanche, base, bsc, mainnet, optimism, polygon } from 'viem/chains'
-import { z } from '../core/zod'
-import type { Fetch } from './host'
-import type { Address, AssetId, DeploymentId } from './schema'
+import { z } from '../core/zod.ts'
+import type { Fetch } from './host.ts'
+import type { Address, AssetId, DeploymentId } from './schema.ts'
 
 type Observed = { assetId: DeploymentId; quantity: string }
 

@@ -1,7 +1,7 @@
-import { uuidv7 } from '../core/id'
-import type { Db } from './db'
-import { partyOf } from './ledger'
-import { exists, q } from './schema'
+import { uuidv7 } from '../core/id.ts'
+import type { Db } from './db.ts'
+import { partyOf } from './ledger.ts'
+import { exists, q } from './schema.ts'
 
 export const merchantKinds = [
   'supermarket',

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import type { Link } from '../src/data/host'
+import type { Link } from '../src/data/host.ts'
 
 const name = 'garner-dev'
 

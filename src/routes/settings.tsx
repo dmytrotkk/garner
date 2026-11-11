@@ -1,12 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { currencies } from '../data/settings'
-import { Copy } from '../ui/copy'
-import { Page } from '../ui/page'
-import { Picker } from '../ui/picker'
-import { SettingsGroup, SettingsRow } from '../ui/settings'
-import { Switch } from '../ui/switch'
-import { Connect } from './-connect'
-import { root, useSettings } from './-data'
+import { currencies } from '../data/settings.ts'
+import { Copy } from '../ui/copy.tsx'
+import { Page } from '../ui/page.tsx'
+import { Picker } from '../ui/picker.tsx'
+import { SettingsGroup, SettingsRow } from '../ui/settings.tsx'
+import { Switch } from '../ui/switch.tsx'
+import { Connect } from './-connect.tsx'
+import { root, useSettings } from './-data.ts'
 
 export const Route = createFileRoute('/settings')({
   loader: ({ context }) => context.address(),

@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { account, coin, institution, migrated } from '../../host/fresh'
-import { fold, ledger, movements } from './ledger'
-import { type AssetId, dayOf, q } from './schema'
+import { account, coin, institution, migrated } from '../../host/fresh.ts'
+import { fold, ledger, movements } from './ledger.ts'
+import { type AssetId, dayOf, q } from './schema.ts'
 
 const euro = 'fiat:EUR' as const
 const open = (party: string, ref: string, fee = 0n) => ({

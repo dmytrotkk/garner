@@ -1,13 +1,13 @@
-import type { CategoryIcon } from '../data/categories'
-import { Card } from '../ui/card'
-import { BlendChart, type Slice } from '../ui/charts/blend'
-import { type Hue, hues } from '../ui/hues'
-import { MeshCard } from '../ui/mesh-card'
-import { Stat } from '../ui/page'
-import { Tile } from '../ui/tile'
-import { icons } from './-categories'
-import { glyphOf } from './-institutions'
-import { Money } from './-money'
+import type { CategoryIcon } from '../data/categories.ts'
+import { Card } from '../ui/card.tsx'
+import { BlendChart, type Slice } from '../ui/charts/blend.tsx'
+import { type Hue, hues } from '../ui/hues.ts'
+import { MeshCard } from '../ui/mesh-card.tsx'
+import { Stat } from '../ui/page.tsx'
+import { Tile } from '../ui/tile.tsx'
+import { icons } from './-categories.tsx'
+import { glyphOf } from './-institutions.tsx'
+import { Money } from './-money.tsx'
 
 export type Seed = { name: string; icon: CategoryIcon; hue: Hue }
 

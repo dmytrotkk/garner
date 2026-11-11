@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { book } from '../../host/fresh'
-import { cells, open, view } from './statement'
-import { xls } from './xls'
+import { book } from '../../host/fresh.ts'
+import { cells, open, view } from './statement.ts'
+import { xls } from './xls.ts'
 
 const printed = [['Title'], ['Café ok', '', '-1234.56'], ['', 'Ca\tf']]
 

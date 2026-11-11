@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { coin, migrated } from '../../host/fresh'
-import { icon } from './icons'
-import { q } from './schema'
+import { coin, migrated } from '../../host/fresh.ts'
+import { icon } from './icons.ts'
+import { q } from './schema.ts'
 
 test('a held coin takes its logo from a deployment, never from its canonical row', async () => {
   const db = await migrated()

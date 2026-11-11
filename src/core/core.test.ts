@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { date, money, percent, quantity, short, tick, title, units } from './format'
-import { uuidv7 } from './id'
+import { date, money, percent, quantity, short, tick, title, units } from './format.ts'
+import { uuidv7 } from './id.ts'
 
 test('uuidv7 is well formed and sorts by time', () => {
   const [first, second] = [uuidv7(1_000), uuidv7(2_000)]

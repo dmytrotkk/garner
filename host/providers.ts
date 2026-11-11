@@ -1,4 +1,4 @@
-import type { Provider, Transport } from '../src/data/host'
+import type { Provider, Transport } from '../src/data/host.ts'
 
 const providers: Record<Provider, (path: string) => string> = {
   coingecko: (path) => `https://api.coingecko.com/api/v3${path}`,

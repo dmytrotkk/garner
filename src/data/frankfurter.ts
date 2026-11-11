@@ -1,6 +1,6 @@
-import { z } from '../core/zod'
-import type { Fetch } from './host'
-import type { Day } from './schema'
+import { z } from '../core/zod.ts'
+import type { Fetch } from './host.ts'
+import type { Day } from './schema.ts'
 
 const Latest = z.object({ date: z.iso.date(), rates: z.object({ USD: z.number().positive() }) })
 

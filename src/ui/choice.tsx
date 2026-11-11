@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Picker } from './picker'
+import { Picker } from './picker.tsx'
 
 type Option = { value: string; label: string }
 

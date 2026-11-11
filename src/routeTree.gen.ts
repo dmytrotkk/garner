@@ -8,19 +8,22 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as CategoriesRouteImport } from './routes/categories'
-import { Route as CryptoRouteImport } from './routes/crypto'
-import { Route as FiatRouteImport } from './routes/fiat'
-import { Route as KitRouteImport } from './routes/kit'
-import { Route as MovementsRouteImport } from './routes/movements'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as AccountsAccountIdRouteImport } from './routes/accounts.$accountId'
-import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId'
-import { Route as CategoriesCategoryIdRouteImport } from './routes/categories_.$categoryId'
-import { Route as InstitutionsInstitutionIdRouteImport } from './routes/institutions.$institutionId'
-import { Route as MerchantsMerchantIdRouteImport } from './routes/merchants.$merchantId'
+import { createFileRoute } from '@tanstack/react-router'
+
+import { Route as rootRouteImport } from './routes/__root.tsx'
+import { Route as IndexRouteImport } from './routes/index.tsx'
+import { Route as CategoriesRouteImport } from './routes/categories.tsx'
+import { Route as CryptoRouteImport } from './routes/crypto.tsx'
+import { Route as FiatRouteImport } from './routes/fiat.tsx'
+import { Route as MovementsRouteImport } from './routes/movements.tsx'
+import { Route as SettingsRouteImport } from './routes/settings.tsx'
+import { Route as AccountsAccountIdRouteImport } from './routes/accounts.$accountId.tsx'
+import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId.tsx'
+import { Route as CategoriesCategoryIdRouteImport } from './routes/categories_.$categoryId.tsx'
+import { Route as InstitutionsInstitutionIdRouteImport } from './routes/institutions.$institutionId.tsx'
+import { Route as MerchantsMerchantIdRouteImport } from './routes/merchants.$merchantId.tsx'
+
+const KitLazyRouteImport = createFileRoute('/kit')()
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,11 +45,11 @@ const FiatRoute = FiatRouteImport.update({
   path: '/fiat',
   getParentRoute: () => rootRouteImport,
 } as any)
-const KitRoute = KitRouteImport.update({
+const KitLazyRoute = KitLazyRouteImport.update({
   id: '/kit',
   path: '/kit',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/kit.lazy.tsx').then((d) => d.Route))
 const MovementsRoute = MovementsRouteImport.update({
   id: '/movements',
   path: '/movements',
@@ -89,9 +92,9 @@ export interface FileRoutesByFullPath {
   '/categories': typeof CategoriesRoute
   '/crypto': typeof CryptoRoute
   '/fiat': typeof FiatRoute
-  '/kit': typeof KitRoute
   '/movements': typeof MovementsRoute
   '/settings': typeof SettingsRoute
+  '/kit': typeof KitLazyRoute
   '/accounts/$accountId': typeof AccountsAccountIdRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
@@ -103,9 +106,9 @@ export interface FileRoutesByTo {
   '/categories': typeof CategoriesRoute
   '/crypto': typeof CryptoRoute
   '/fiat': typeof FiatRoute
-  '/kit': typeof KitRoute
   '/movements': typeof MovementsRoute
   '/settings': typeof SettingsRoute
+  '/kit': typeof KitLazyRoute
   '/accounts/$accountId': typeof AccountsAccountIdRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
@@ -118,9 +121,9 @@ export interface FileRoutesById {
   '/categories': typeof CategoriesRoute
   '/crypto': typeof CryptoRoute
   '/fiat': typeof FiatRoute
-  '/kit': typeof KitRoute
   '/movements': typeof MovementsRoute
   '/settings': typeof SettingsRoute
+  '/kit': typeof KitLazyRoute
   '/accounts/$accountId': typeof AccountsAccountIdRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/categories_/$categoryId': typeof CategoriesCategoryIdRoute
@@ -134,9 +137,9 @@ export interface FileRouteTypes {
     | '/categories'
     | '/crypto'
     | '/fiat'
-    | '/kit'
     | '/movements'
     | '/settings'
+    | '/kit'
     | '/accounts/$accountId'
     | '/assets/$assetId'
     | '/categories/$categoryId'
@@ -148,9 +151,9 @@ export interface FileRouteTypes {
     | '/categories'
     | '/crypto'
     | '/fiat'
-    | '/kit'
     | '/movements'
     | '/settings'
+    | '/kit'
     | '/accounts/$accountId'
     | '/assets/$assetId'
     | '/categories/$categoryId'
@@ -162,9 +165,9 @@ export interface FileRouteTypes {
     | '/categories'
     | '/crypto'
     | '/fiat'
-    | '/kit'
     | '/movements'
     | '/settings'
+    | '/kit'
     | '/accounts/$accountId'
     | '/assets/$assetId'
     | '/categories_/$categoryId'
@@ -177,9 +180,9 @@ export interface RootRouteChildren {
   CategoriesRoute: typeof CategoriesRoute
   CryptoRoute: typeof CryptoRoute
   FiatRoute: typeof FiatRoute
-  KitRoute: typeof KitRoute
   MovementsRoute: typeof MovementsRoute
   SettingsRoute: typeof SettingsRoute
+  KitLazyRoute: typeof KitLazyRoute
   AccountsAccountIdRoute: typeof AccountsAccountIdRoute
   AssetsAssetIdRoute: typeof AssetsAssetIdRoute
   CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
@@ -221,7 +224,7 @@ declare module '@tanstack/react-router' {
       id: '/kit'
       path: '/kit'
       fullPath: '/kit'
-      preLoaderRoute: typeof KitRouteImport
+      preLoaderRoute: typeof KitLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/movements': {
@@ -281,9 +284,9 @@ const rootRouteChildren: RootRouteChildren = {
   CategoriesRoute: CategoriesRoute,
   CryptoRoute: CryptoRoute,
   FiatRoute: FiatRoute,
-  KitRoute: KitRoute,
   MovementsRoute: MovementsRoute,
   SettingsRoute: SettingsRoute,
+  KitLazyRoute: KitLazyRoute,
   AccountsAccountIdRoute: AccountsAccountIdRoute,
   AssetsAssetIdRoute: AssetsAssetIdRoute,
   CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,

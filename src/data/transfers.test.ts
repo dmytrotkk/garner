@@ -1,10 +1,10 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { account, coin, institution, migrated, moved } from '../../host/fresh'
-import { categories, setRule } from './categories'
-import { movements } from './ledger'
-import { type CanonicalId, q } from './schema'
-import { months } from './spending'
+import { account, coin, institution, migrated, moved } from '../../host/fresh.ts'
+import { categories, setRule } from './categories.ts'
+import { movements } from './ledger.ts'
+import { type CanonicalId, q } from './schema.ts'
+import { months } from './spending.ts'
 import {
   decide,
   forgetRoute,
@@ -14,7 +14,7 @@ import {
   savedRoutes,
   saveRoute,
   undecide,
-} from './transfers'
+} from './transfers.ts'
 
 const eur: CanonicalId = 'fiat:EUR'
 const eth: CanonicalId = 'coingecko:ethereum'

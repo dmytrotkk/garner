@@ -1,4 +1,4 @@
-import { type Draft, type Plan, plan, type Route } from '../data/imports'
+import { type Draft, type Plan, plan, type Route } from '../data/imports.ts'
 
 export type ImportFlow =
   | { state: 'reading'; pick: number }

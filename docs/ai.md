@@ -27,7 +27,7 @@ Desktop (decided 2026-10-01, built in step D2 of `foundation.md`): no port and n
 
 ## Registry `src/ai/tools.ts`
 
-A plain array of tools, each a name, a description, a Zod input object, a Zod output, MCP annotations (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) and `run({ db, fetch }, input)`. The schemas double as MCP schemas and runtime validation: inputs are parsed on the way in, outputs on the way out.
+A plain array of tools, each a name, a title for clients to show (Portfolio, Net worth history, Add account; the server is titled Garner), a description, a Zod input object, a Zod output, MCP annotations (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) and `run({ db, fetch }, input)`. The schemas double as MCP schemas and runtime validation: inputs are parsed on the way in, outputs on the way out.
 
 | Tool | Input | Output | Annotation |
 |---|---|---|---|
@@ -39,13 +39,11 @@ A plain array of tools, each a name, a description, a Zod input object, a Zod ou
 | `add_account` | `institutionId`, `address`, `name?` | the account; the model calls `sync` next | |
 | `rename_institution` | `institutionId`, `name` | the institution | idempotent |
 | `rename_account` | `accountId`, `name` | the account | idempotent |
-| `remove_institution` | `institutionId` | ok | destructive |
-| `remove_account` | `accountId` | ok | destructive |
 | `update_settings` | `currency?`, `privacy?` | settings | idempotent, open world |
 | `sync` | none | synced at | open world |
 | `categorize` | `answers` | saved, skipped, categories, kinds, merchants, examples, accounts, the next parties, left, next (see Categorize) | idempotent, not destructive |
 
-Ids are our UUIDs, addresses are placeholders, assets are canonical ids and symbols, chains are names. Every write tool calls the same domain function in `src/data` as the dialog does (step 11 of `foundation.md`): validation, id checks and ids live there once.
+Removing an institution or an account is in the app only (2026-11-01): it cannot be undone, and a Connect entry puts the tools in every session of the AI app. Ids are our UUIDs, addresses are placeholders, assets are canonical ids and symbols, chains are names. Every write tool calls the same domain function in `src/data` as the dialog does (step 11 of `foundation.md`): validation, id checks and ids live there once.
 
 ## Mask `src/ai/mask.ts`
 
@@ -111,7 +109,7 @@ Later, without rework:
 - Desktop: `src/ai/serve.ts` takes the relay frames (`open`, `line`, `close`) and gives each connection a transport and `serveStdio`. One instance is pinned to the connection, for a 2025 client and a 2026-07-28 client alike. A line that is not a message goes to the transport's error handler and the connection stays up.
 - Dev host: `createMcpHandler` with `responseMode: 'json'` in `host/vite.ts`, the factory per request, nothing held between requests. The secret is a file, `data/mcp-token`, created once by the host; it reaches the page only inside `address()`, the URL Settings offers to copy, and never a model. The endpoint skips the same-origin check and requires it in the URL, `/host/mcp/<token>`.
 - `changes(listener)`, exported by the http host and subscribed once in `main.tsx`, is the dev host's write channel: `/host/events` emits `write` after every write tool and the router is invalidated. On the desktop the registry runs in the page and invalidates it directly.
-- The tool list declares `ttlMs` of five minutes and `cacheScope: 'private'`, long enough for Claude Code to skip its startup wait within a session, short enough for card changes to show up. The card itself reads with a one-day private hint, safe since its URI changes with its content.
+- The tool list declares `ttlMs` of five minutes and `cacheScope: 'private'`, long enough for Claude Code to skip its startup wait within a session, short enough for card changes to show up. The card itself reads with a one-day private hint, safe since its URI changes with its content, and says `prefersBorder: false`, since it draws its own surfaces.
 - The server carries `instructions` (step 23): how to categorize, self-contained in the first 512 characters, since Codex reads only those and Claude Desktop none.
 - Deprecated features are not used: no roots, sampling, logging or HTTP+SSE.
 
@@ -153,7 +151,7 @@ Working directory `data/agent`, empty and gitignored. Not `--bare`: it skips the
 
 ## Cards, the MCP Apps extension
 
-A read tool can point at a `ui://` resource, an HTML page the client renders in a sandboxed iframe next to the result. `src/apps/portfolio.tsx` is that page for the `portfolio` tool: our `Stat`, `Section`, `Table`, `TokenIcon` and tokens, fed by `structuredContent` through `App` and its `toolresult` event from `@modelcontextprotocol/ext-apps`, formatted in the display currency the tool now returns. `bun run apps` builds it with `vite.apps.config.ts` into one self-contained file, `cards/portfolio.html`; `bun run build` runs it before the app build, which imports it as a lazy raw chunk for the desktop page. The dev host reads the file per request, so in development run `bun run apps` once after changing a card. `src/ai/server.ts` serves it under a content-hashed URI, `ui://garner/portfolio.<hash>.html`, links the tool through `_meta.ui.resourceUri` and declares the extension capability. The hash is the cache buster: ChatGPT kept showing an old card under a fixed URI even though the server served the new file, so every build gets a new URI, and the tool list cache hint is five minutes so clients pick it up. When the calling client declares the UI extension with the card's MIME type, the result also carries `_meta.icons`, the held tokens' logos as data URIs, since the sandboxed card cannot load from our origin, and the tool's text content is one sentence saying a card is shown and asking for a short reply, so the model does not repeat the table; the numbers stay available in `structuredContent`. Clients without the extension get the full JSON text. Whether Claude Desktop's chat client declares the extension itself, now that no bridge declares it for it, is checked by eye in D2. Light theme only for now. Trial started 2026-09-23.
+A read tool can point at a `ui://` resource, an HTML page the client renders in a sandboxed iframe next to the result. `src/apps/portfolio.tsx` is that page for the `portfolio` tool: our `Stat`, `Section`, `Grid`, `TokenIcon` and tokens, fed by `structuredContent` through `App` and its `toolresult` event from `@modelcontextprotocol/ext-apps`, formatted in the display currency the tool now returns. `bun run apps` builds it with `vite.apps.config.ts` into one self-contained file, `cards/portfolio.html`; `bun run build` runs it before the app build, which imports it as a lazy raw chunk for the desktop page. The dev host reads the file per request, so in development run `bun run apps` once after changing a card. `src/ai/server.ts` serves it under a content-hashed URI, `ui://garner/portfolio.<hash>.html`, links the tool through `_meta.ui.resourceUri` and declares the extension capability. The hash is the cache buster: ChatGPT kept showing an old card under a fixed URI even though the server served the new file, so every build gets a new URI, and the tool list cache hint is five minutes so clients pick it up. When the calling client declares the UI extension with the card's MIME type, the result also carries `_meta.icons`, the held tokens' logos as data URIs, since the sandboxed card cannot load from our origin, and the tool's text content is one sentence saying a card is shown and asking for a short reply, so the model does not repeat the table; the numbers stay available in `structuredContent`. Clients without the extension get the full JSON text. Whether Claude Desktop's chat client declares the extension itself, now that no bridge declares it for it, is checked by eye in D2. Light theme only for now. Trial started 2026-09-23.
 
 ## Chat
 
@@ -174,8 +172,7 @@ A read tool can point at a `ui://` resource, an HTML page the client renders in 
 - A direct API runner. It needs a key. The interface leaves room for it and for a local model.
 - The Claude Agent SDK. A Node library would tie the runner to a JS host, and a Rust host can spawn the CLI just as well.
 - Hooks or settings files for confirmations. The permission prompt tool does it over MCP.
-- `_meta["anthropic/requiresUserInteraction"]` on removals. Claude Code converts a prompt tool's allow into a deny for such tools, which would break in-app confirmations.
-- Elicitation and tasks. Elicitation can later make removals ask for the institution name in any client.
+- Elicitation and tasks.
 - Masking numbers, hashed placeholders, a free-form query tool, multi-harness connectors.
 
 ## Steps
@@ -183,7 +180,7 @@ A read tool can point at a `ui://` resource, an HTML page the client renders in 
 Built: the registry and mask (migration 4) and the server and Settings (2026-09-23), `holdings` folded into `portfolio` (step 15 of `foundation.md`), the desktop relay with connect in Rust (D2), the bank text rule (step 19) and its test (2026-10-05), and Categorize with merchants (step 23, 2026-10-05 and 2026-10-06, waiting on one real run from Dmytro's AI app). Next, in order (reordered 2026-10-05):
 
 1. Chat: one new migration (`conversation`, `message`), the runner, `confirm`, the chat route, the palette entry. About 500 lines plus UI. Checkpoint: in-app chat with confirmations.
-2. Codex runner, dashboards, elicitation for removals, the local model runner over the categorize queue, recurring payments.
+2. Codex runner, dashboards, the local model runner over the categorize queue, recurring payments.
 
 To verify against the installed CLI when building the runner: the exact payload of the permission prompt tool, and the empty-list form of `--tools`.
 

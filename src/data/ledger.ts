@@ -1,7 +1,7 @@
-import { plain } from '../core/search'
-import type { Db } from './db'
-import { type AssetId, type Day, dayOf, type Kind, q, type Source } from './schema'
-import { decisions, type LegKey, legKey, pair, savedRoutes, type Transfer } from './transfers'
+import { plain } from '../core/search.ts'
+import type { Db } from './db.ts'
+import { type AssetId, type Day, dayOf, type Kind, q, type Source } from './schema.ts'
+import { decisions, type LegKey, legKey, pair, savedRoutes, type Transfer } from './transfers.ts'
 
 type Fact = { accountId: string; assetId: AssetId; time: number; quantity: string }
 

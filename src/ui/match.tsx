@@ -1,5 +1,5 @@
 import { Tick02Icon } from '@hugeicons/core-free-icons'
-import { Icon } from './icon'
+import { Icon } from './icon.tsx'
 
 function Ledger() {
   return (

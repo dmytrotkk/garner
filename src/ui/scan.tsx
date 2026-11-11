@@ -1,4 +1,4 @@
-import type { Hue } from './hues'
+import type { Hue } from './hues.ts'
 
 const rows: readonly Hue[] = ['lime', 'orange', 'blue', 'rose', 'teal']
 

@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
 import { formatUnits } from 'viem'
-import { coin, held, migrated, moved } from '../../host/fresh'
+import { coin, held, migrated, moved } from '../../host/fresh.ts'
 import {
   createEvmAccount,
   createInstitution,
@@ -8,9 +8,9 @@ import {
   remove,
   rename,
   setHolding,
-} from './accounts'
-import { portfolio } from './portfolio'
-import { q } from './schema'
+} from './accounts.ts'
+import { portfolio } from './portfolio.ts'
+import { q } from './schema.ts'
 
 const address = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045'
 const eth = coin('coingecko:ethereum', 'ETH')

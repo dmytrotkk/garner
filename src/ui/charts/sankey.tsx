@@ -1,9 +1,9 @@
 import { Tooltip as Base } from '@base-ui/react/tooltip'
 import { type Dispatch, type SetStateAction, useLayoutEffect, useRef, useState } from 'react'
-import { percent } from '../../core/format'
-import { color, type Hue } from '../hues'
-import { Tooltip } from '../tooltip'
-import { type Format, type Item, Rows, tint } from './frame'
+import { percent } from '../../core/format.ts'
+import { color, type Hue } from '../hues.ts'
+import { Tooltip } from '../tooltip.tsx'
+import { type Format, type Item, Rows, tint } from './frame.tsx'
 
 export type Node = { key: string; label: string; hue: Hue | undefined; items?: readonly Item[] }
 

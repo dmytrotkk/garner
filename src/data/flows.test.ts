@@ -1,8 +1,8 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { flows, proposals, routes } from './flows'
-import type { Movement } from './ledger'
-import type { Transfer } from './transfers'
+import { flows, proposals, routes } from './flows.ts'
+import type { Movement } from './ledger.ts'
+import type { Transfer } from './transfers.ts'
 
 const e = (amount: string) => parseUnits(amount, 18)
 const at = (day: number) => Date.UTC(2026, 0, day, 12)

@@ -1,8 +1,8 @@
-import { z } from '../core/zod'
-import type { Db } from './db'
-import { usdPer } from './frankfurter'
-import type { Fetch } from './host'
-import { addAssets, coin, dayOf, q, quote } from './schema'
+import { z } from '../core/zod.ts'
+import type { Db } from './db.ts'
+import { usdPer } from './frankfurter.ts'
+import type { Fetch } from './host.ts'
+import { addAssets, coin, dayOf, q, quote } from './schema.ts'
 
 export const currencies = ['USD', 'EUR'] as const
 export type Currency = (typeof currencies)[number]

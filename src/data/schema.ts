@@ -1,7 +1,7 @@
 import { type Compilable, type RawBuilder, sql } from 'kysely'
-import type { CategoryIcon } from './categories'
-import { builder, type Db, type Migration } from './db'
-import type { MerchantKind } from './merchants'
+import type { CategoryIcon } from './categories.ts'
+import { builder, type Db, type Migration } from './db.ts'
+import type { MerchantKind } from './merchants.ts'
 
 export type Address = `0x${string}`
 export type Day = `${number}-${number}-${number}`

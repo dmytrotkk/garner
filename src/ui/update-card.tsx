@@ -1,4 +1,4 @@
-import { mark } from './logo'
+import { mark } from './logo.tsx'
 
 export type PendingUpdate =
   | { state: 'available'; version: string }

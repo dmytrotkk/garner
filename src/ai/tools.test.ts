@@ -1,13 +1,18 @@
 import { expect, test } from 'bun:test'
-import { coin, held, migrated, moved } from '../../host/fresh'
-import { createEvmAccount, createInstitution, createManualAccount } from '../data/accounts'
-import { clearAi, pending, setRule } from '../data/categories'
-import type { Fetch } from '../data/host'
-import { applyImport, plan, read } from '../data/imports'
-import { movements } from '../data/ledger'
-import { portfolio } from '../data/portfolio'
-import { type Day, q } from '../data/schema'
-import { call, tools } from './tools'
+import { coin, held, migrated, moved } from '../../host/fresh.ts'
+import {
+  createEvmAccount,
+  createInstitution,
+  createManualAccount,
+  remove,
+} from '../data/accounts.ts'
+import { clearAi, pending, setRule } from '../data/categories.ts'
+import type { Fetch } from '../data/host.ts'
+import { applyImport, plan, read } from '../data/imports.ts'
+import { movements } from '../data/ledger.ts'
+import { portfolio } from '../data/portfolio.ts'
+import { type Day, q } from '../data/schema.ts'
+import { call, tools } from './tools.ts'
 
 const address = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045'
 const eth = coin('coingecko:ethereum', 'ETH', 'Ethereum')
@@ -52,13 +57,14 @@ test('every tool has a name, a description and object schemas', () => {
     'add_account',
     'rename_institution',
     'rename_account',
-    'remove_institution',
-    'remove_account',
     'update_settings',
     'sync',
     'categorize',
   ])
-  for (const tool of tools) expect(tool.description).toMatch(/\.$/)
+  for (const tool of tools) {
+    expect(tool.description).toMatch(/\.$/)
+    expect(tool.title).toMatch(/^[A-Z][^.]*$/)
+  }
 })
 
 test('reads are masked: no address leaves, chains are names, assets are canonical', async () => {
@@ -125,19 +131,19 @@ test('writes take placeholders and validate their input', async () => {
     name: 'Cold',
   })
   expect(await call(ctx, 'add_institution', { name: 'Vault' })).toMatchObject({ name: 'Vault' })
-  await expect(call(ctx, 'remove_account', { accountId: 'missing' })).rejects.toThrow(
+  await expect(call(ctx, 'rename_account', { accountId: 'missing', name: 'Cold' })).rejects.toThrow(
     'Unknown account.',
   )
 })
 
-test('settings round-trip, an institution can be removed, sync with nothing to sync reports null', async () => {
-  const { ctx, institutionId } = await open()
+test('settings round-trip, sync with nothing to sync reports null', async () => {
+  const { db, ctx, institutionId } = await open()
   expect(await call(ctx, 'update_settings', { currency: 'EUR' })).toEqual({
     currency: 'EUR',
     privacy: false,
   })
   expect(await call(ctx, 'settings', {})).toEqual({ currency: 'EUR', privacy: false })
-  expect(await call(ctx, 'remove_institution', { institutionId })).toEqual({ ok: true })
+  await remove(db, 'institution', institutionId)
   expect(await call(ctx, 'sync', {})).toEqual({ syncedAt: null })
   await expect(call(ctx, 'nothing', {})).rejects.toThrow('Unknown tool nothing.')
 })

@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
 import { strToU8, zipSync } from 'fflate'
-import { open, view } from './statement'
-import { xlsx } from './xlsx'
+import { open, view } from './statement.ts'
+import { xlsx } from './xlsx.ts'
 
 const main = 'xmlns:x="http://schemas.openxmlformats.org/spreadsheetml/2006/main"'
 

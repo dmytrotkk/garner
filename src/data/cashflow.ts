@@ -1,6 +1,6 @@
-import type { Movement } from './ledger'
-import { monthOf } from './schema'
-import { type Valuation, valuer } from './spending'
+import type { Movement } from './ledger.ts'
+import { monthOf } from './schema.ts'
+import { type Valuation, valuer } from './spending.ts'
 
 export type Month = `${number}-${number}`
 

@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { keywords, suggest } from './keywords'
-import { partyOf } from './ledger'
-import type { Category } from './schema'
+import { keywords, suggest } from './keywords.ts'
+import { partyOf } from './ledger.ts'
+import type { Category } from './schema.ts'
 
 const category = (name: string, icon: Category['icon']): Category => ({
   id: name,

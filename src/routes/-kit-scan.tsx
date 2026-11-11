@@ -1,9 +1,9 @@
-import { Card } from '../ui/card'
-import { Copy } from '../ui/copy'
-import { Notice } from '../ui/notice'
-import { Section } from '../ui/page'
-import { Scan } from '../ui/scan'
-import { prompt } from './-categories'
+import { Card } from '../ui/card.tsx'
+import { Copy } from '../ui/copy.tsx'
+import { Notice } from '../ui/notice.tsx'
+import { Section } from '../ui/page.tsx'
+import { Scan } from '../ui/scan.tsx'
+import { prompt } from './-categories.tsx'
 
 export function KitScan() {
   return (

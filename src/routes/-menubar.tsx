@@ -1,12 +1,12 @@
 import { useRouter } from '@tanstack/react-router'
 import { Menu, MenuItem, Submenu } from '@tauri-apps/api/menu'
 import { getCurrentWindow } from '@tauri-apps/api/window'
-import { useEffect, useRef, useState } from 'react'
-import { title } from '../core/format'
-import type { Command } from '../ui/command'
-import { pages } from './-commands'
-import { search, useLayer } from './-layer'
-import { toggleSidebar, useSidebar, useTrail } from './-window'
+import { useEffect, useEffectEvent, useState } from 'react'
+import { title } from '../core/format.ts'
+import type { Command } from '../ui/command.ts'
+import { pages } from './-commands.tsx'
+import { search, useLayer } from './-layer.ts'
+import { toggleSidebar, useSidebar, useTrail } from './-window.tsx'
 
 type Bar = {
   menu: Menu
@@ -37,9 +37,10 @@ const shown = (action: () => unknown) => () => {
   return reveal()
 }
 
-async function build(commands: readonly Command[], run: (id: string) => unknown, router: Router) {
+async function build(pick: (id: string) => Command | undefined, router: Router) {
+  const run = (id: string) => pick(id)?.run()
   const label = (id: string) => {
-    const command = commands.find((each) => each.id === id)
+    const command = pick(id)
     if (!command) throw new Error(`The ${id} command is missing.`)
     return title(command.label)
   }
@@ -154,17 +155,12 @@ export function MenuBar({ commands }: { commands: readonly Command[] }) {
   const layer = useLayer()
   const open = useSidebar()
   const { at, end } = useTrail()
-  const latest = useRef(commands)
   const [bar, setBar] = useState<Bar>()
-
-  useEffect(() => {
-    latest.current = commands
-  }, [commands])
+  const pick = useEffectEvent((id: string) => commands.find((command) => command.id === id))
 
   useEffect(() => {
     let gone = false
-    const run = (id: string) => latest.current.find((command) => command.id === id)?.run()
-    build(latest.current, run, router).then(async (built) => {
+    build((id) => pick(id), router).then(async (built) => {
       if (gone) return built.menu.close()
       await built.menu.setAsAppMenu()
       await built.windows.setAsWindowsMenuForNSApp()

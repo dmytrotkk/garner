@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import { date, local } from '../core/format'
-import type { MerchantKind } from '../data/merchants'
-import { Card } from '../ui/card'
-import { BlendChart } from '../ui/charts/blend'
-import { type Column, DataTable } from '../ui/data-table'
-import { Section, Stat } from '../ui/page'
-import { Picker } from '../ui/picker'
-import { Label } from '../ui/table'
-import { Tile } from '../ui/tile'
-import { kindIcons } from './-categories'
-import { internal, type Movement, movements } from './-kit-tables'
-import { Money } from './-money'
+import { date, local } from '../core/format.ts'
+import type { MerchantKind } from '../data/merchants.ts'
+import { Card } from '../ui/card.tsx'
+import { BlendChart } from '../ui/charts/blend.tsx'
+import { type Column, DataTable } from '../ui/data-table.tsx'
+import { Label } from '../ui/grid.tsx'
+import { Section, Stat } from '../ui/page.tsx'
+import { Picker } from '../ui/picker.tsx'
+import { Tile } from '../ui/tile.tsx'
+import { kindIcons } from './-categories.tsx'
+import { internal, type Movement, movements } from './-kit-tables.tsx'
+import { Money } from './-money.tsx'
 
 const kindOf: Readonly<Record<string, MerchantKind>> = {
   'Pingo Doce': 'supermarket',
@@ -200,7 +200,6 @@ function Merchant({ merchant }: { merchant: Merchant }) {
           columns={history}
           rows={list}
           rowKey={({ id }) => id}
-          density="compact"
           initial={{ id: 'date', desc: true }}
         />
       </Section>
@@ -226,7 +225,6 @@ export function KitMerchants() {
           columns={withoutIcons}
           rows={merchants}
           rowKey={({ name }) => name}
-          density="compact"
           initial={{ id: 'spent', desc: true }}
         />
       </Section>

@@ -1,9 +1,9 @@
-import type { IconSvgElement } from '@hugeicons/react'
 import type { ReactNode } from 'react'
-import type { Searchable } from '../core/search'
-import type { Glyph } from './glyph'
-import type { Hue } from './hues'
-import type { SymbolName } from './symbols'
+import type { Searchable } from '../core/search.ts'
+import type { Glyph } from './glyph.tsx'
+import type { Hue } from './hues.ts'
+import type { IconSvgElement } from './icon.tsx'
+import type { SymbolName } from './symbols.ts'
 
 export type Command = Searchable & {
   id: string

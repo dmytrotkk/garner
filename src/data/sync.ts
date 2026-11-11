@@ -1,11 +1,11 @@
 import { sql } from 'kysely'
-import { backfill } from './backfill'
-import type { Db } from './db'
-import { decimals, holdings } from './evm'
-import { usdPer } from './frankfurter'
-import type { Fetch } from './host'
-import { ledger } from './ledger'
-import { prices } from './llama'
+import { backfill } from './backfill.ts'
+import type { Db } from './db.ts'
+import { decimals, holdings } from './evm.ts'
+import { usdPer } from './frankfurter.ts'
+import type { Fetch } from './host.ts'
+import { ledger } from './ledger.ts'
+import { prices } from './llama.ts'
 import {
   type Asset,
   addAssets,
@@ -16,9 +16,9 @@ import {
   q,
   quote,
   scale,
-} from './schema'
-import { fiat, setSetting, settings } from './settings'
-import { tokens } from './tokens'
+} from './schema.ts'
+import { fiat, setSetting, settings } from './settings.ts'
+import { tokens } from './tokens.ts'
 
 const rule = { currency: 'EUR' } as const
 

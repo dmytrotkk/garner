@@ -1,6 +1,13 @@
 import type { ExpressionBuilder } from 'kysely'
-import type { Db } from './db'
-import { type CanonicalId, type DecisionRow, q, type RouteRow, type Schema, scale } from './schema'
+import type { Db } from './db.ts'
+import {
+  type CanonicalId,
+  type DecisionRow,
+  q,
+  type RouteRow,
+  type Schema,
+  scale,
+} from './schema.ts'
 
 export type LegKey = { accountId: string; ref: string; leg: string }
 

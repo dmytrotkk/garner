@@ -1,7 +1,7 @@
-import { percent } from '../../core/format'
-import { color } from '../hues'
-import { Tooltip } from '../tooltip'
-import type { Slice } from './blend'
+import { percent } from '../../core/format.ts'
+import { color } from '../hues.ts'
+import { Tooltip } from '../tooltip.tsx'
+import type { Slice } from './blend.tsx'
 
 const radius = 15
 const length = 2 * Math.PI * radius

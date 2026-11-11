@@ -1,7 +1,7 @@
 import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { Button } from './button'
-import { Icon } from './icon'
-import { type Item, Menu } from './menu'
+import { Button } from './button.tsx'
+import { Icon } from './icon.tsx'
+import { type Item, Menu } from './menu.tsx'
 
 type Props = { label: string; items: readonly Item[]; disabled?: boolean; aria?: string }
 

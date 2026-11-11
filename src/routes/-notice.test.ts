@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { type Dismissal, settle } from './-notice'
+import { type Dismissal, settle } from './-notice.ts'
 
 test('a closed notice stays closed while the count falls and shows again once it rises', () => {
   const shown: Dismissal = { state: 'shown' }

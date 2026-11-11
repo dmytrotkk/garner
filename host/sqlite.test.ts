@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { statement as s } from '../src/data/host'
-import { fresh } from './fresh'
+import { statement as s } from '../src/data/host.ts'
+import { fresh } from './fresh.ts'
 
 const count = s('select count(*) as n from holding')
 

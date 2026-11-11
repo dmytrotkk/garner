@@ -1,14 +1,14 @@
 import { ArrowRight } from 'lucide-react'
 import { type ReactNode, useState } from 'react'
-import { dash, date, day } from '../core/format'
-import type { Proposal } from '../data/flows'
-import { decide, saveRoute } from '../data/transfers'
-import { Button } from '../ui/button'
-import { Dialog } from '../ui/dialog'
-import { Glyph } from '../ui/glyph'
-import { Switch } from '../ui/switch'
-import { root } from './-data'
-import { sum } from './-money'
+import { dash, date, day } from '../core/format.ts'
+import type { Proposal } from '../data/flows.ts'
+import { decide, saveRoute } from '../data/transfers.ts'
+import { Button } from '../ui/button.tsx'
+import { Dialog } from '../ui/dialog.tsx'
+import { Glyph } from '../ui/glyph.tsx'
+import { Switch } from '../ui/switch.tsx'
+import { root } from './-data.ts'
+import { sum } from './-money.tsx'
 
 export function Arrow() {
   return <ArrowRight aria-hidden="true" className="size-4 shrink-0 text-faint" strokeWidth={1.5} />

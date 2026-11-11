@@ -61,7 +61,6 @@ fn main() {
         return;
     }
     tauri::Builder::default()
-        .plugin(tauri_plugin_window_state::Builder::default().build())
         .manage(mcp::Relay::new(socket))
         .invoke_handler(tauri::generate_handler![
             sql::query,
@@ -94,6 +93,7 @@ fn main() {
                     .build()?;
             let ns_window: &NSWindow = unsafe { &*window.ns_window()?.cast() };
             ns_window.setExcludedFromWindowsMenu(true);
+            ns_window.setFrameAutosaveName(&NSString::from_str("main"));
             if let Some(thread) = MainThreadMarker::new() {
                 ns_window.setToolbar(Some(&NSToolbar::new(thread)));
                 ns_window.setToolbarStyle(NSWindowToolbarStyle::Unified);

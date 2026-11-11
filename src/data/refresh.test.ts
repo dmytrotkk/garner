@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { next, type Sync } from './refresh'
+import { next, type Sync } from './refresh.ts'
 
 const idle: Sync = { status: 'idle' }
 const running: Sync = { status: 'running', again: false }

@@ -13,7 +13,13 @@
     "lineWidth": 100
   },
   "linter": {
+    "domains": {
+      "react": "recommended"
+    },
     "rules": {
+      "correctness": {
+        "useImportExtensions": "error"
+      },
       "style": {
         "noInlineStyles": "error"
       },

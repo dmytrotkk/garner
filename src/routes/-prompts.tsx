@@ -3,8 +3,8 @@ import { Search01Icon } from '@hugeicons/core-free-icons'
 import { useNavigate, useParams, useRouter } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { formatUnits } from 'viem'
-import { date, day, local, plural, quantity } from '../core/format'
-import { type Group, type Searchable, search } from '../core/search'
+import { date, day, local, plural, quantity } from '../core/format.ts'
+import { type Group, type Searchable, search } from '../core/search.ts'
 import {
   createEvmAccount,
   createInstitution,
@@ -13,7 +13,7 @@ import {
   rename,
   setHolding,
   type Table,
-} from '../data/accounts'
+} from '../data/accounts.ts'
 import {
   type Assignable,
   type CategoryIcon,
@@ -28,39 +28,39 @@ import {
   removeCategory,
   setNote,
   setRule,
-} from '../data/categories'
-import { removeImport } from '../data/imports'
-import { keywords, suggest } from '../data/keywords'
-import { type Identity, type Movement, movements } from '../data/ledger'
+} from '../data/categories.ts'
+import { removeImport } from '../data/imports.ts'
+import { keywords, suggest } from '../data/keywords.ts'
+import { type Identity, type Movement, movements } from '../data/ledger.ts'
 import {
   createMerchant,
   editMerchant,
   identify,
   merchantKinds,
   removeMerchant,
-} from '../data/merchants'
-import type { Position } from '../data/portfolio'
-import { type Category, type Institution, isCanonical } from '../data/schema'
-import { listed } from '../data/tokens'
-import { decide, type LegKey, legKey, saveRoute, undecide } from '../data/transfers'
-import { AmountInput } from '../ui/amount'
-import { Choice } from '../ui/choice'
-import { Combobox, type Option } from '../ui/combobox'
-import { Dialog as Sheet } from '../ui/dialog'
-import { Field } from '../ui/field'
-import { FormDialog, NameDialog } from '../ui/form-dialog'
-import { Icon } from '../ui/icon'
-import { IconGrid } from '../ui/icon-grid'
-import { Input } from '../ui/input'
-import { Segmented } from '../ui/segmented'
-import { Switch } from '../ui/switch'
-import { Tile } from '../ui/tile'
-import { hues, icons, kindLabel, typeGroups, typeLabels } from './-categories'
-import { root, useSync } from './-data'
-import { Import } from './-import-dialog'
-import { close, type ManualView, type Prompt, useLayer } from './-layer'
-import { sum } from './-money'
-import { PairSheet } from './-pair'
+} from '../data/merchants.ts'
+import type { Position } from '../data/portfolio.ts'
+import { type Category, type Institution, isCanonical } from '../data/schema.ts'
+import { listed } from '../data/tokens.ts'
+import { decide, type LegKey, legKey, saveRoute, undecide } from '../data/transfers.ts'
+import { AmountInput } from '../ui/amount.tsx'
+import { Choice } from '../ui/choice.tsx'
+import { Combobox, type Option } from '../ui/combobox.tsx'
+import { Dialog as Sheet } from '../ui/dialog.tsx'
+import { Field } from '../ui/field.tsx'
+import { FormDialog, NameDialog } from '../ui/form-dialog.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { IconGrid } from '../ui/icon-grid.tsx'
+import { Input } from '../ui/input.tsx'
+import { Segmented } from '../ui/segmented.tsx'
+import { Switch } from '../ui/switch.tsx'
+import { Tile } from '../ui/tile.tsx'
+import { hues, icons, kindLabel, typeGroups, typeLabels } from './-categories.tsx'
+import { root, useSync } from './-data.ts'
+import { Import } from './-import-dialog.tsx'
+import { close, type ManualView, type Prompt, useLayer } from './-layer.ts'
+import { sum } from './-money.tsx'
+import { PairSheet } from './-pair.tsx'
 
 type Named = { id: string; name: string }
 type Dialog = { open: boolean; onClose: () => void }

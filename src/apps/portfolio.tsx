@@ -1,10 +1,10 @@
 import { App } from '@modelcontextprotocol/ext-apps'
 import { createRoot } from 'react-dom/client'
-import type { Portfolio } from '../ai/tools'
-import { dash, money, quantity } from '../core/format'
-import { Section, Stat } from '../ui/page'
-import { type Column, Label, Table } from '../ui/table'
-import { asset, provideIcons } from '../ui/token'
+import type { Portfolio } from '../ai/tools.ts'
+import { dash, money, quantity } from '../core/format.ts'
+import { type Column, Grid, Label } from '../ui/grid.tsx'
+import { Section, Stat } from '../ui/page.tsx'
+import { asset, provideIcons } from '../ui/token.tsx'
 import '../ui/tokens.css'
 
 type Holding = Portfolio['holdings'][number]
@@ -32,10 +32,10 @@ function View({ total, institutions, holdings, display }: Portfolio) {
     <div className="flex flex-col gap-6 p-1">
       <Stat label="Net worth" value={shown(total)} />
       <Section title="Holdings">
-        <Table columns={assets} rows={holdings} rowKey={({ id }) => id} />
+        <Grid columns={assets} rows={holdings} rowKey={({ id }) => id} />
       </Section>
       <Section title="Institutions">
-        <Table columns={groups} rows={institutions} rowKey={({ id }) => id} />
+        <Grid columns={groups} rows={institutions} rowKey={({ id }) => id} />
       </Section>
     </div>
   )

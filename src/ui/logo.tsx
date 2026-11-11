@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import type { Mark } from './glyph'
+import type { Mark } from './glyph.tsx'
 
 export const mark: Mark = {
   viewBox: '0 0 1500 1500',

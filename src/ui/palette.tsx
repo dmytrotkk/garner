@@ -2,12 +2,12 @@ import { Autocomplete } from '@base-ui/react/autocomplete'
 import { Dialog } from '@base-ui/react/dialog'
 import { Search01Icon } from '@hugeicons/core-free-icons'
 import { useState } from 'react'
-import type { Group } from '../core/search'
-import type { Command } from './command'
-import { Glyph } from './glyph'
-import { Icon } from './icon'
-import { Blank, Tile } from './tile'
-import { TokenIcon } from './token'
+import type { Group } from '../core/search.ts'
+import type { Command } from './command.ts'
+import { Glyph } from './glyph.tsx'
+import { Icon } from './icon.tsx'
+import { Blank, Tile } from './tile.tsx'
+import { TokenIcon } from './token.tsx'
 
 type ListProps = {
   find: (query: string) => Group<Command>[]

@@ -1,8 +1,8 @@
 import { type FormEvent, type ReactNode, useId, useState } from 'react'
-import { Button } from './button'
-import { Dialog } from './dialog'
-import { Field } from './field'
-import { Input } from './input'
+import { Button } from './button.tsx'
+import { Dialog } from './dialog.tsx'
+import { Field } from './field.tsx'
+import { Input } from './input.tsx'
 
 type Form = { status: 'idle' } | { status: 'pending' } | { status: 'failed'; error: string }
 

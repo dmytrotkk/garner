@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { fresh } from '../../host/fresh'
-import { builder, createDb, type Migration } from './db'
+import { fresh } from '../../host/fresh.ts'
+import { builder, createDb, type Migration } from './db.ts'
 
 type Schema = {
   institution: { id: string; name: string; note: string | null }

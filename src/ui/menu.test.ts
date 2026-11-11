@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import type { Action } from './command'
-import { type Entry, menuOn, menuUnder, provideMenu } from './menu'
-import { type SymbolName, symbols } from './symbols'
+import type { Action } from './command.ts'
+import { type Entry, menuOn, menuUnder, provideMenu } from './menu.tsx'
+import { type SymbolName, symbols } from './symbols.ts'
 
 test('native menus show title-cased entries, a separator before a later negative item, mark their element while open, and run the pick', async () => {
   const ran: string[] = []

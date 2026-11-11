@@ -1,10 +1,10 @@
 import { Combobox as Base } from '@base-ui/react/combobox'
-import type { IconSvgElement } from '@hugeicons/react'
 import { type ReactNode, useMemo, useState } from 'react'
-import { search } from '../core/search'
-import { Icon } from './icon'
-import { field } from './input'
-import { Label } from './table'
+import { search } from '../core/search.ts'
+import { Label } from './grid.tsx'
+import type { IconSvgElement } from './icon.tsx'
+import { Icon } from './icon.tsx'
+import { field } from './input.tsx'
 
 export type Option = {
   value: string

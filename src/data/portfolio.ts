@@ -1,7 +1,7 @@
-import { units } from '../core/format'
-import type { Db } from './db'
-import { chainName } from './evm'
-import { ledger } from './ledger'
+import { units } from '../core/format.ts'
+import type { Db } from './db.ts'
+import { chainName } from './evm.ts'
+import { ledger } from './ledger.ts'
 import {
   type Account,
   type AssetId,
@@ -9,7 +9,7 @@ import {
   type CanonicalId,
   type Institution,
   q,
-} from './schema'
+} from './schema.ts'
 
 export type Position = {
   accountId: string

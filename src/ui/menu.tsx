@@ -1,8 +1,8 @@
 import { Menu as Base } from '@base-ui/react/menu'
 import type { ReactElement } from 'react'
-import { title } from '../core/format'
-import type { Action, Command } from './command'
-import type { SymbolName } from './symbols'
+import { title } from '../core/format.ts'
+import type { Action, Command } from './command.ts'
+import type { SymbolName } from './symbols.ts'
 
 export type Item = Pick<Command, 'id' | 'label' | 'tone' | 'run'>
 

@@ -1,7 +1,7 @@
 import { Database } from 'bun:sqlite'
 import { existsSync, mkdirSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
-import type { Sql, Statement, Value } from '../src/data/host'
+import type { Sql, Statement, Value } from '../src/data/host.ts'
 
 export function sqlite(path: string): Sql {
   mkdirSync(dirname(path), { recursive: true })

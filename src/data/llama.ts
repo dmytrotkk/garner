@@ -1,6 +1,6 @@
-import { z } from '../core/zod'
-import type { Fetch } from './host'
-import { type CanonicalId, type Day, dayOf } from './schema'
+import { z } from '../core/zod.ts'
+import type { Fetch } from './host.ts'
+import { type CanonicalId, type Day, dayOf } from './schema.ts'
 
 const Prices = z.object({ coins: z.record(z.string(), z.object({ price: z.number() })) })
 

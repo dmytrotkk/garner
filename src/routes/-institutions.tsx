@@ -1,10 +1,11 @@
 import { Wallet01Icon } from '@hugeicons/core-free-icons'
-import type { AccountView, InstitutionView } from '../data/portfolio'
-import { Glyph } from '../ui/glyph'
-import { markOf } from '../ui/marks'
-import { type Column, Label, Table } from '../ui/table'
-import { institutionCommands } from './-commands'
-import { Money } from './-money'
+import type { AccountView, InstitutionView } from '../data/portfolio.ts'
+import { Glyph } from '../ui/glyph.tsx'
+import { type Column, Label } from '../ui/grid.tsx'
+import { markOf } from '../ui/marks.ts'
+import { Table } from '../ui/table.tsx'
+import { institutionCommands } from './-commands.tsx'
+import { Money } from './-money.tsx'
 
 type Named = { name: string; accounts: readonly Pick<AccountView, 'kind'>[] }
 

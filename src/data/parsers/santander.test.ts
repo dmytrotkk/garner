@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { revolut } from './revolut'
-import { santander } from './santander'
+import { revolut } from './revolut.ts'
+import { santander } from './santander.ts'
 
 const header = 'Operation date\tEffective date\tDescription\tAmount( EUR )\tAccount balance( EUR )'
 const doc = (...rows: readonly string[]) =>

@@ -1,6 +1,6 @@
-import type { Noticed } from '../ui/notices'
-import { useCategorizeNotice } from './-categories'
-import { useTransfersNotice } from './-flows'
+import type { Noticed } from '../ui/notices.tsx'
+import { useCategorizeNotice } from './-categories.tsx'
+import { useTransfersNotice } from './-flows.tsx'
 
 export function useNotices(): Noticed[] {
   const transfers = useTransfersNotice()

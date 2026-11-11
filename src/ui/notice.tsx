@@ -1,8 +1,8 @@
 import { Cancel01Icon } from '@hugeicons/core-free-icons'
-import type { IconSvgElement } from '@hugeicons/react'
 import type { ReactNode } from 'react'
-import { Button } from './button'
-import { Icon } from './icon'
+import { Button } from './button.tsx'
+import type { IconSvgElement } from './icon.tsx'
+import { Icon } from './icon.tsx'
 
 const tones = {
   neutral: 'text-dim',

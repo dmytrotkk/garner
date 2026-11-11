@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { type Noticed, Notices } from './notices'
-import { Scroller } from './scroller'
+import { type Noticed, Notices } from './notices.tsx'
+import { Scroller } from './scroller.tsx'
 
 type Props = {
   title: string

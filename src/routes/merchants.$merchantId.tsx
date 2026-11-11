@@ -1,12 +1,12 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { overview } from '../data/categories'
-import { Actions } from '../ui/actions'
-import { Page, Section } from '../ui/page'
-import { Tile } from '../ui/tile'
-import { hues, kindIcons } from './-categories'
-import { merchantCommands } from './-commands'
-import { root } from './-data'
-import { listed, Movements, Spending, Summary } from './-movements'
+import { overview } from '../data/categories.ts'
+import { Actions } from '../ui/actions.tsx'
+import { Page, Section } from '../ui/page.tsx'
+import { Tile } from '../ui/tile.tsx'
+import { hues, kindIcons } from './-categories.tsx'
+import { merchantCommands } from './-commands.tsx'
+import { root } from './-data.ts'
+import { listed, Movements, Spending, Summary } from './-movements.tsx'
 
 export const Route = createFileRoute('/merchants/$merchantId')({
   loader: async ({ context: { db }, params }) => {

@@ -1,11 +1,11 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { account, coin, institution, migrated, moved } from '../../host/fresh'
-import { categories, setRule } from './categories'
-import { movements } from './ledger'
-import { type Day, q } from './schema'
-import { setSetting } from './settings'
-import { months } from './spending'
+import { account, coin, institution, migrated, moved } from '../../host/fresh.ts'
+import { categories, setRule } from './categories.ts'
+import { movements } from './ledger.ts'
+import { type Day, q } from './schema.ts'
+import { setSetting } from './settings.ts'
+import { months } from './spending.ts'
 
 test('a month spends what left for expenses and open, nets refunds, skips transfers and converts each day', async () => {
   const db = await migrated()

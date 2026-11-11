@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { coin, fresh, institution, migrated } from '../../host/fresh'
-import { builder, createDb } from './db'
-import { type Account, type Asset, dayOf, migrations, q, type Schema } from './schema'
+import { coin, fresh, institution, migrated } from '../../host/fresh.ts'
+import { builder, createDb } from './db.ts'
+import { type Account, type Asset, dayOf, migrations, q, type Schema } from './schema.ts'
 
 const evm: Account = {
   id: 'a1',

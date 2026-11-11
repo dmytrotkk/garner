@@ -1,7 +1,7 @@
-import { store } from '../core/store'
-import type { Db } from './db'
-import type { Fetch } from './host'
-import { sync } from './sync'
+import { store } from '../core/store.ts'
+import type { Db } from './db.ts'
+import type { Fetch } from './host.ts'
+import { sync } from './sync.ts'
 
 export type Sync =
   | { status: 'idle' }

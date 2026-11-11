@@ -1,11 +1,11 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { parse, reading } from '../data/query'
-import { months } from '../data/spending'
-import { Button } from '../ui/button'
-import { Page, Section } from '../ui/page'
-import { refine } from './-layer'
-import { Movements, Summary } from './-movements'
-import { matching, today } from './-search'
+import { parse, reading } from '../data/query.ts'
+import { months } from '../data/spending.ts'
+import { Button } from '../ui/button.tsx'
+import { Page, Section } from '../ui/page.tsx'
+import { refine } from './-layer.ts'
+import { Movements, Summary } from './-movements.tsx'
+import { matching, today } from './-search.tsx'
 
 export const Route = createFileRoute('/movements')({
   validateSearch: ({ q }: Record<string, unknown>) => ({

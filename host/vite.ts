@@ -6,13 +6,13 @@ import {
   originValidationResponse,
 } from '@modelcontextprotocol/server'
 import type { Plugin } from 'vite'
-import { server as mcp } from '../src/ai/server'
-import { createDb } from '../src/data/db'
-import { gate } from '../src/data/gate'
-import { icon } from './icons'
-import { links } from './mcp-connect'
-import { fetchProvider } from './providers'
-import { sqlite } from './sqlite'
+import { server as mcp } from '../src/ai/server.ts'
+import { createDb } from '../src/data/db.ts'
+import { gate } from '../src/data/gate.ts'
+import { icon } from './icons.ts'
+import { links } from './mcp-connect.ts'
+import { fetchProvider } from './providers.ts'
+import { sqlite } from './sqlite.ts'
 
 const toRequest = async (req: IncomingMessage, url: string) =>
   new Request(url, {

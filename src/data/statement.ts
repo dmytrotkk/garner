@@ -1,7 +1,7 @@
 import { formatUnits, parseUnits } from 'viem'
-import { type Kind, scale } from './schema'
-import { xls } from './xls'
-import { xlsx } from './xlsx'
+import { type Kind, scale } from './schema.ts'
+import { xls } from './xls.ts'
+import { xlsx } from './xlsx.ts'
 
 export type Doc = { name: string; text: string }
 type Unit = { fiat: string } | { ticker: string }

@@ -4,7 +4,7 @@ import {
   type Transport,
 } from '@modelcontextprotocol/server'
 import { serveStdio } from '@modelcontextprotocol/server/stdio'
-import type { Relay } from '../data/host'
+import type { Relay } from '../data/host.ts'
 
 export function serve({ clients, reply }: Relay, factory: McpServerFactory) {
   const open = new Map<number, Transport>()

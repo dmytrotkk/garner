@@ -1,9 +1,9 @@
 import { parseUnits } from 'viem'
-import { date, dayMonth, month, monthShort } from '../core/format'
-import { plain, words } from '../core/search'
-import type { Movement } from './ledger'
-import { type CategoryType, type Day, dayOf } from './schema'
-import { internal, spends } from './spending'
+import { date, dayMonth, month, monthShort } from '../core/format.ts'
+import { plain, words } from '../core/search.ts'
+import type { Movement } from './ledger.ts'
+import { type CategoryType, type Day, dayOf } from './schema.ts'
+import { internal, spends } from './spending.ts'
 
 export type Flag = 'spent' | 'received' | 'uncategorized'
 export type Figure = { value: bigint; places: number }

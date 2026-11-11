@@ -1,6 +1,6 @@
 import { getRouteApi, useRouter } from '@tanstack/react-router'
-import { refresh } from '../data/refresh'
-import { type Currency, setCurrency, setSetting } from '../data/settings'
+import { refresh } from '../data/refresh.ts'
+import { type Currency, setCurrency, setSetting } from '../data/settings.ts'
 
 export const root = getRouteApi('__root__')
 

@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { fromLinks } from './-connect'
+import { fromLinks } from './-connect.tsx'
 
 test('the apps row reads the worst link first: failed, then confirm, then missing', () => {
   expect(fromLinks([])).toEqual({ status: 'none' })

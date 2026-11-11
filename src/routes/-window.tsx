@@ -1,11 +1,11 @@
 import { SidebarLeftIcon } from '@hugeicons/core-free-icons'
 import { type RouterHistory, useRouter } from '@tanstack/react-router'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { store } from '../core/store'
-import { Glass, GlassSearch } from '../ui/glass'
-import { Icon } from '../ui/icon'
-import { Logo } from '../ui/logo'
-import { search } from './-layer'
+import { store } from '../core/store.ts'
+import { Glass, GlassSearch } from '../ui/glass.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { Logo } from '../ui/logo.tsx'
+import { search } from './-layer.ts'
 
 type Trail = { at: number; end: number }
 

@@ -1,7 +1,7 @@
-import { dash } from '../core/format'
-import type { Position } from '../data/portfolio'
-import type { Column } from '../ui/table'
-import { Amount, Money } from './-money'
+import { dash } from '../core/format.ts'
+import type { Position } from '../data/portfolio.ts'
+import type { Column } from '../ui/grid.tsx'
+import { Amount, Money } from './-money.tsx'
 
 export const chain: Column<Position> = { header: 'Chain', cell: ({ chain }) => chain ?? dash }
 

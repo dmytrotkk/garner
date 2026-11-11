@@ -1,6 +1,6 @@
-import { z } from '../core/zod'
-import type { Fetch } from './host'
-import type { AssetId } from './schema'
+import { z } from '../core/zod.ts'
+import type { Fetch } from './host.ts'
+import type { AssetId } from './schema.ts'
 
 export type Coin = { coin: string; symbol: string; name: string; rank: number }
 

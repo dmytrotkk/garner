@@ -1,11 +1,11 @@
 import { EthereumIcon, Home03Icon, Settings01Icon } from '@hugeicons/core-free-icons'
-import type { IconSvgElement } from '@hugeicons/react'
 import { useEffect, useState } from 'react'
-import { Card } from '../ui/card'
-import { Icon } from '../ui/icon'
-import { Section } from '../ui/page'
-import { Segmented } from '../ui/segmented'
-import { type PendingUpdate, UpdateCard } from '../ui/update-card'
+import { Card } from '../ui/card.tsx'
+import type { IconSvgElement } from '../ui/icon.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { Section } from '../ui/page.tsx'
+import { Segmented } from '../ui/segmented.tsx'
+import { type PendingUpdate, UpdateCard } from '../ui/update-card.tsx'
 
 type State = PendingUpdate['state']
 

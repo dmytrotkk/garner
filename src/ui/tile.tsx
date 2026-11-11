@@ -1,6 +1,6 @@
-import type { IconSvgElement } from '@hugeicons/react'
-import type { Hue } from './hues'
-import { Icon } from './icon'
+import type { Hue } from './hues.ts'
+import type { IconSvgElement } from './icon.tsx'
+import { Icon } from './icon.tsx'
 
 const sizes = {
   sm: 'size-5 **:data-icon:size-3.5',

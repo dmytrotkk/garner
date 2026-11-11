@@ -1,8 +1,8 @@
 import { Link, type LinkProps } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
-import type { Action } from './command'
-import { Glyph } from './glyph'
-import { menuOn } from './menu'
+import type { Action } from './command.ts'
+import { Glyph } from './glyph.tsx'
+import { menuOn } from './menu.tsx'
 
 const row =
   'flex h-8 w-full items-center gap-2.5 rounded-control pr-2.5 pl-3.75 text-dim transition not-aria-[current=page]:hover:bg-fill/50 not-aria-[current=page]:data-menu-open:bg-fill/50 aria-[current=page]:bg-fill aria-[current=page]:text-ink'

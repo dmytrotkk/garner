@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import { Bar, BarChart, type BarShapeProps, Tooltip, XAxis, YAxis } from 'recharts'
-import { color, type Hue, hues } from '../hues'
-import { type Format, Frame, Tip } from './frame'
+import { color, type Hue, hues } from '../hues.ts'
+import { type Format, Frame, Tip } from './frame.tsx'
 
 export type Slice = { key: string; label: string; hue: Hue; value: number }
 

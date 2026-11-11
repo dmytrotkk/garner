@@ -1,5 +1,5 @@
 import { Channel, invoke } from '@tauri-apps/api/core'
-import type { Frame, Host, Relay } from '../host'
+import type { Frame, Host, Relay } from '../host.ts'
 
 const call = <Result>(command: string, args: Record<string, unknown> = {}) =>
   invoke<Result>(command, args).catch((reason) => {

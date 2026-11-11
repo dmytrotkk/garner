@@ -10,22 +10,17 @@ import {
 } from '@tanstack/react-table'
 import { ArrowDown, ArrowUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { type ReactNode, useMemo, useState } from 'react'
-import { quantity } from '../core/format'
-import { Actions } from './actions'
-import type { Action } from './command'
-import { menuOn } from './menu'
+import { quantity } from '../core/format.ts'
+import { Actions } from './actions.tsx'
+import type { Action } from './command.ts'
+import { layer, line, rule } from './grid.tsx'
+import { menuOn } from './menu.tsx'
 
 const widths = {
   fill: 'min-w-24 flex-1',
   sm: 'w-20 shrink-0',
   md: 'w-28 shrink-0',
   lg: 'w-40 shrink-0',
-}
-
-const densities = {
-  comfortable: 'h-10',
-  compact: 'h-8',
-  dense: 'h-7 text-caption',
 }
 
 export type Column<Row> = {
@@ -51,7 +46,6 @@ type Props<Row extends RowData> = {
   columns: readonly Column<Row>[]
   rows: readonly Row[]
   rowKey: (row: Row) => string
-  density?: keyof typeof densities
   initial?: { id: string; desc: boolean }
   group?: Group<Row>
   actions?: RowActions<Row>
@@ -67,10 +61,6 @@ const features = tableFeatures({
   sortFns: { basic: sortFn_basic },
 })
 
-export const line = 'flex items-center gap-4 rounded-control px-3'
-export const rule = 'before:absolute before:inset-x-3 before:top-0 before:h-px before:bg-line'
-export const layer =
-  'absolute inset-y-0 right-1.5 flex items-center opacity-0 transition focus-within:opacity-100 group-hover:opacity-100 has-data-popup-open:opacity-100'
 const glass = 'bg-surface/75 backdrop-blur-bar'
 const place = ({ width = 'md', end }: { width?: keyof typeof widths; end?: boolean }) =>
   `${widths[width]} ${end ? 'justify-end text-right' : ''}`
@@ -79,7 +69,6 @@ export function DataTable<Row extends RowData>({
   columns,
   rows,
   rowKey,
-  density = 'comfortable',
   initial,
   group,
   actions,
@@ -136,7 +125,7 @@ export function DataTable<Row extends RowData>({
           type="button"
           aria-expanded={open.has(key)}
           onClick={() => toggle(key)}
-          className={`${line} ${gutter} ${rule} ${densities[density]} relative w-full gap-3 transition hover:bg-fill`}
+          className={`${line} ${gutter} ${rule} relative h-10 w-full gap-3 transition hover:bg-fill`}
         >
           <span className="grid size-5 shrink-0 place-items-center rounded-tile bg-fill text-dim">
             {open.has(key) ? (
@@ -158,7 +147,7 @@ export function DataTable<Row extends RowData>({
           {column.cell(entry)}
         </span>
       ))
-      const look = `${line} ${gutter} ${densities[density]} transition hover:bg-fill group-data-menu-open:bg-fill`
+      const look = `${line} ${gutter} h-10 transition hover:bg-fill group-data-menu-open:bg-fill`
       const items = actions?.items(entry) ?? []
       return (
         <div key={rowKey(entry)} className={`group relative ${rule}`} {...menuOn(items)}>

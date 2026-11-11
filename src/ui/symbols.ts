@@ -13,7 +13,7 @@ import {
   ShopSignIcon,
   Tag01Icon,
 } from '@hugeicons/core-free-icons'
-import type { IconSvgElement } from '@hugeicons/react'
+import type { IconSvgElement } from './icon.tsx'
 
 export const symbols = {
   plus: Add01Icon,

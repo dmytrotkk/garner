@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import type { Link } from '../data/host'
-import { Button } from '../ui/button'
-import { root } from './-data'
+import { useEffect, useEffectEvent, useState } from 'react'
+import type { Link } from '../data/host.ts'
+import { Button } from '../ui/button.tsx'
+import { root } from './-data.ts'
 
 type Apps =
   | { status: 'checking' | 'installing' | 'none' | 'connected' | 'missing' | 'confirm' }
@@ -42,8 +42,9 @@ export function Connect() {
     }
   }
 
+  const check = useEffectEvent(() => run(false))
   useEffect(() => {
-    run(false)
+    check()
   }, [])
 
   return (

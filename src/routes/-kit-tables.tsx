@@ -1,12 +1,12 @@
-import { date, local, month, plural } from '../core/format'
-import { Ring } from '../ui/charts/ring'
-import { type Column, DataTable, type Fold, type Group } from '../ui/data-table'
-import { Section } from '../ui/page'
-import { Label } from '../ui/table'
-import { Tile } from '../ui/tile'
-import { icons } from './-categories'
-import type { Seed } from './-kit-hues'
-import { Money } from './-money'
+import { date, month, plural } from '../core/format.ts'
+import { Ring } from '../ui/charts/ring.tsx'
+import { type Column, DataTable, type Fold, type Group } from '../ui/data-table.tsx'
+import { Label } from '../ui/grid.tsx'
+import { Section } from '../ui/page.tsx'
+import { Tile } from '../ui/tile.tsx'
+import { icons } from './-categories.tsx'
+import type { Seed } from './-kit-hues.tsx'
+import { Money } from './-money.tsx'
 
 type List<Item> = readonly [Item, ...Item[]]
 
@@ -148,7 +148,6 @@ export const movements: readonly Movement[] = Array.from({ length: 10_000 }, (_,
 const by = {
   party: ({ party }: Movement) => party.toLowerCase(),
   category: ({ kind }: Movement) => kind.name.toLowerCase(),
-  account: ({ account }: Movement) => account.toLowerCase(),
   time: ({ time }: Movement) => time,
   amount: ({ amount }: Movement) => amount,
 }
@@ -179,75 +178,23 @@ const category: Column<Movement> = {
   sort: by.category,
 }
 
-const account: Column<Movement> = {
-  id: 'account',
-  header: 'Account',
-  cell: ({ account }) => account,
-  sort: by.account,
-  width: 'lg',
-}
-
-const variants = [
+const sortable: readonly Column<Movement>[] = [
   {
-    density: 'comfortable',
-    title: 'Comfortable, 40px',
-    columns: [
-      {
-        id: 'party',
-        header: 'Movement',
-        cell: ({ party, kind, account }) => (
-          <span className="flex min-w-0 items-center gap-3">
-            <Tile hue={kind.hue} icon={icons[kind.icon]} size="sm" />
-            <Label text={party} note={account} />
-          </span>
-        ),
-        sort: by.party,
-        width: 'fill',
-      },
-      category,
-      when,
-      amount,
-    ],
+    id: 'party',
+    header: 'Movement',
+    cell: ({ party, kind, account }) => (
+      <span className="flex min-w-0 items-center gap-3">
+        <Tile hue={kind.hue} icon={icons[kind.icon]} size="sm" />
+        <Label text={party} note={account} />
+      </span>
+    ),
+    sort: by.party,
+    width: 'fill',
   },
-  {
-    density: 'compact',
-    title: 'Compact, 32px, no icons',
-    columns: [
-      {
-        id: 'party',
-        header: 'Movement',
-        cell: ({ party }) => party,
-        sort: by.party,
-        width: 'fill',
-      },
-      category,
-      account,
-      when,
-      amount,
-    ],
-  },
-  {
-    density: 'dense',
-    title: 'Dense, 28px',
-    columns: [
-      { id: 'date', header: 'Date', cell: ({ time }) => local(time), sort: by.time, width: 'sm' },
-      {
-        id: 'party',
-        header: 'Movement',
-        cell: ({ party }) => party,
-        sort: by.party,
-        width: 'fill',
-      },
-      category,
-      account,
-      amount,
-    ],
-  },
-] as const satisfies readonly {
-  density: 'comfortable' | 'compact' | 'dense'
-  title: string
-  columns: readonly Column<Movement>[]
-}[]
+  category,
+  when,
+  amount,
+]
 
 const day = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
 
@@ -328,16 +275,13 @@ export function KitTables() {
         fold={folded}
       />
     </Section>,
-    ...variants.map(({ density, title, columns }) => (
-      <Section key={density} title={title}>
-        <DataTable
-          columns={columns}
-          rows={movements}
-          rowKey={({ id }) => id}
-          density={density}
-          initial={{ id: 'date', desc: true }}
-        />
-      </Section>
-    )),
+    <Section key="sortable" title="Sortable list">
+      <DataTable
+        columns={sortable}
+        rows={movements}
+        rowKey={({ id }) => id}
+        initial={{ id: 'date', desc: true }}
+      />
+    </Section>,
   ]
 }

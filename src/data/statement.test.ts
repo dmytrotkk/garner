@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { cells, chain, heading, instant, keyed, open } from './statement'
+import { cells, chain, heading, instant, keyed, open } from './statement.ts'
 
 test('cells reads quoted commas, doubled quotes, both line ends and a byte order mark', () => {
   expect(cells('\uFEFFa,b\r\n"1,5","say ""hi"""\n\n"two\nlines",\n', ',')).toEqual([

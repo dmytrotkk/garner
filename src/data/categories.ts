@@ -1,11 +1,11 @@
 import { formatUnits } from 'viem'
-import { plural } from '../core/format'
-import { uuidv7 } from '../core/id'
-import type { Db } from './db'
-import { type Movement, type MovementKey, movements, partyOf, rules } from './ledger'
-import { type MerchantKind, merchantKinds, merchants } from './merchants'
-import { categoryTypes, dayOf, exists, type Kind, q, type Source, scale } from './schema'
-import { daysOf } from './transfers'
+import { plural } from '../core/format.ts'
+import { uuidv7 } from '../core/id.ts'
+import type { Db } from './db.ts'
+import { type Movement, type MovementKey, movements, partyOf, rules } from './ledger.ts'
+import { type MerchantKind, merchantKinds, merchants } from './merchants.ts'
+import { categoryTypes, dayOf, exists, type Kind, q, type Source, scale } from './schema.ts'
+import { daysOf } from './transfers.ts'
 
 const icons = [
   'basket',

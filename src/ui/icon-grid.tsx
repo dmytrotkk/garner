@@ -1,8 +1,8 @@
 import { Radio } from '@base-ui/react/radio'
 import { RadioGroup } from '@base-ui/react/radio-group'
-import type { IconSvgElement } from '@hugeicons/react'
 import { useId } from 'react'
-import { Icon } from './icon'
+import type { IconSvgElement } from './icon.tsx'
+import { Icon } from './icon.tsx'
 
 type Props = {
   name: string

@@ -1,14 +1,14 @@
 import { expect, test } from 'bun:test'
 import { parseUnits } from 'viem'
-import { account, coin, institution, migrated, moved } from '../../host/fresh'
-import { cashflow, grainOf, latest, period, shift, trailing, within } from './cashflow'
-import { categories, setRule } from './categories'
-import { movements } from './ledger'
-import { createMerchant, identify, merchantKinds } from './merchants'
-import { type Day, q } from './schema'
-import { setSetting } from './settings'
-import { months, valuation } from './spending'
-import { decide } from './transfers'
+import { account, coin, institution, migrated, moved } from '../../host/fresh.ts'
+import { cashflow, grainOf, latest, period, shift, trailing, within } from './cashflow.ts'
+import { categories, setRule } from './categories.ts'
+import { movements } from './ledger.ts'
+import { createMerchant, identify, merchantKinds } from './merchants.ts'
+import { type Day, q } from './schema.ts'
+import { setSetting } from './settings.ts'
+import { months, valuation } from './spending.ts'
+import { decide } from './transfers.ts'
 
 const entry = (accountId: string, day: Day, amount: string, memo: string, assetId = 'fiat:EUR') =>
   moved(accountId, assetId as 'fiat:EUR', day, parseUnits(amount, 18).toString(), memo)

@@ -5,29 +5,28 @@ import {
   InformationCircleIcon,
   RefreshIcon,
 } from '@hugeicons/core-free-icons'
-import { createFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import { Button } from '../ui/button'
-import { Card } from '../ui/card'
-import { BarChart } from '../ui/charts/bar'
-import { DonutChart } from '../ui/charts/donut'
-import { LineChart } from '../ui/charts/line'
-import { Drop } from '../ui/drop'
-import { Icon } from '../ui/icon'
-import { Notice } from '../ui/notice'
-import { Page, Section } from '../ui/page'
-import { type Column, Label, Table } from '../ui/table'
-import { Tooltip } from '../ui/tooltip'
-import { KitHues } from './-kit-hues'
-import { KitMerchants } from './-kit-merchants'
-import { KitScan } from './-kit-scan'
-import { KitTables } from './-kit-tables'
-import { KitUpdate } from './-kit-update'
-import { KitWindow } from './-kit-window'
-import { Amount, Money, useScale } from './-money'
-import { useNotices } from './-notices'
+import { Button } from '../ui/button.tsx'
+import { Card } from '../ui/card.tsx'
+import { LineChart } from '../ui/charts/line.tsx'
+import { Drop } from '../ui/drop.tsx'
+import { type Column, Label } from '../ui/grid.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { Notice } from '../ui/notice.tsx'
+import { Page, Section } from '../ui/page.tsx'
+import { Table } from '../ui/table.tsx'
+import { Tooltip } from '../ui/tooltip.tsx'
+import { KitHues } from './-kit-hues.tsx'
+import { KitMerchants } from './-kit-merchants.tsx'
+import { KitScan } from './-kit-scan.tsx'
+import { KitTables } from './-kit-tables.tsx'
+import { KitUpdate } from './-kit-update.tsx'
+import { KitWindow } from './-kit-window.tsx'
+import { Amount, Money, useScale } from './-money.tsx'
+import { useNotices } from './-notices.tsx'
 
-export const Route = createFileRoute('/kit')({ component: Kit })
+export const Route = createLazyFileRoute('/kit')({ component: Kit })
 
 type Row = { symbol: string; name: string; usd: number; amount: number }
 
@@ -47,39 +46,15 @@ const columns: readonly Column<Row>[] = [
 
 const day = 86_400_000
 const start = Date.UTC(2026, 2, 25)
-const months = new Intl.DateTimeFormat('en-US', { month: 'short' })
+const daily = Array.from({ length: 180 }, (_, index) => ({
+  time: start + index * day,
+  value: 48_000 + index * 55 + 7_000 * Math.sin(index / 19) + 2_600 * Math.sin(index / 5),
+}))
 
-const daily = Array.from({ length: 180 }, (_, index) => {
-  const crypto = 48_000 + index * 55 + 7_000 * Math.sin(index / 19) + 2_600 * Math.sin(index / 5)
-  return {
-    time: start + index * day,
-    crypto,
-    fiat: crypto * 0.35 + 2_400 * Math.cos(index / 24),
-  }
-})
-
-const monthly = [...Map.groupBy(daily, ({ time }) => months.format(time))].map(
-  ([month, points]) => ({
-    month,
-    crypto: points.reduce((sum, point) => sum + point.crypto, 0) / points.length,
-    fiat: points.reduce((sum, point) => sum + point.fiat, 0) / points.length,
-  }),
-)
-
-const allocation = [
-  { key: 'eth', label: 'ETH', value: 10_000 },
-  { key: 'link', label: 'LINK', value: 6_000 },
-  { key: 'usdc', label: 'USDC', value: 3_000 },
-  { key: 'btc', label: 'BTC', value: 3_000 },
-  { key: 'other', label: 'Other', value: 1_000 },
-]
-
-const crypto = [{ key: 'crypto', label: 'Crypto' }]
-const both = [...crypto, { key: 'fiat', label: 'Fiat' }]
 const money = (value: number) => <Money value={value} />
 
 function Kit() {
-  const line = { data: daily, x: 'time', scale: useScale('USD'), format: money } as const
+  const scale = useScale('USD')
   const [dropped, setDropped] = useState(false)
   return (
     <Page title="Kit" notices={useNotices()}>
@@ -161,28 +136,7 @@ function Kit() {
         />
       </Section>
       <Card title="Net worth" description="Dotted fill">
-        <LineChart {...line} series={crypto} fill="dotted" />
-      </Card>
-      <Card title="Net worth" description="Hatched fill">
-        <LineChart {...line} series={crypto} fill="hatched" />
-      </Card>
-      <Card title="Net worth" description="Line only">
-        <LineChart {...line} series={crypto} />
-      </Card>
-      <Card title="Crypto and fiat" description="Two lines, click the legend to isolate one">
-        <LineChart {...line} series={both} />
-      </Card>
-      <Card title="Crypto and fiat" description="Stacked areas">
-        <LineChart {...line} series={both} fill="dotted" stacked />
-      </Card>
-      <Card title="Monthly average" description="Duotone bars">
-        <BarChart data={monthly} x="month" series={crypto} duotone format={money} />
-      </Card>
-      <Card title="Monthly average" description="Stacked bars">
-        <BarChart data={monthly} x="month" series={both} stacked format={money} />
-      </Card>
-      <Card title="Allocation" description="Donut">
-        <DonutChart slices={allocation} format={money} />
+        <LineChart data={daily} x="time" y="value" label="Net worth" scale={scale} format={money} />
       </Card>
     </Page>
   )

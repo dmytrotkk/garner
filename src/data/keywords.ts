@@ -1,4 +1,4 @@
-import type { CategoryIcon } from './categories'
+import type { CategoryIcon } from './categories.ts'
 
 export const keywords: Readonly<Record<CategoryIcon, readonly string[]>> = {
   basket: [

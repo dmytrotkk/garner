@@ -1,5 +1,5 @@
-import type { IconSvgElement } from '@hugeicons/react'
-import { Icon } from './icon'
+import type { IconSvgElement } from './icon.tsx'
+import { Icon } from './icon.tsx'
 
 export type Mark = { viewBox: string; d: string }
 

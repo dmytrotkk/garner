@@ -1,8 +1,8 @@
 import { isAddress, parseUnits } from 'viem'
-import { short } from '../core/format'
-import { uuidv7 } from '../core/id'
-import type { Db } from './db'
-import { institutionOf } from './imports'
+import { short } from '../core/format.ts'
+import { uuidv7 } from '../core/id.ts'
+import type { Db } from './db.ts'
+import { institutionOf } from './imports.ts'
 import {
   type Account,
   type Address,
@@ -16,7 +16,7 @@ import {
   type ManualAccount,
   q,
   scale,
-} from './schema'
+} from './schema.ts'
 
 const held = q
   .selectFrom('balance')

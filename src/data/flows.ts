@@ -1,6 +1,6 @@
-import type { Assignment, Movement, MovementKey } from './ledger'
-import type { AssetId } from './schema'
-import { type Candidate, type LegKey, legKey, type Via } from './transfers'
+import type { Assignment, Movement, MovementKey } from './ledger.ts'
+import type { AssetId } from './schema.ts'
+import { type Candidate, type LegKey, legKey, type Via } from './transfers.ts'
 
 export type Amount = { assetId: AssetId; quantity: bigint }
 

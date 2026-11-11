@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { account, coin, fresh, institution, migrated } from '../../host/fresh'
+import { account, coin, fresh, institution, migrated } from '../../host/fresh.ts'
 import {
   categories,
   choose,
@@ -11,10 +11,10 @@ import {
   removeCategory,
   setNote,
   setRule,
-} from './categories'
-import { createDb } from './db'
-import { assign, movements, partyOf } from './ledger'
-import { type Kind, migrations, q } from './schema'
+} from './categories.ts'
+import { createDb } from './db.ts'
+import { assign, movements, partyOf } from './ledger.ts'
+import { type Kind, migrations, q } from './schema.ts'
 
 const euro = 'fiat:EUR' as const
 

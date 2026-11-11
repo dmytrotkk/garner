@@ -1,7 +1,7 @@
 import { Search01Icon } from '@hugeicons/core-free-icons'
 import { Fragment, type ReactNode } from 'react'
-import { Icon } from './icon'
-import { Kbd } from './kbd'
+import { Icon } from './icon.tsx'
+import { Kbd } from './kbd.tsx'
 
 export type GlassItem = {
   label: string

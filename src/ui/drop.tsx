@@ -1,5 +1,5 @@
-import { Glyph } from './glyph'
-import type { Hue } from './hues'
+import { Glyph } from './glyph.tsx'
+import type { Hue } from './hues.ts'
 
 const cards = ['left', 'right', 'front'] as const
 

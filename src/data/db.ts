@@ -6,7 +6,7 @@ import {
   SqliteIntrospector,
   SqliteQueryCompiler,
 } from 'kysely'
-import { type Sql, type Statement, statement, type Value } from './host'
+import { type Sql, type Statement, statement, type Value } from './host.ts'
 
 export type Migration = readonly string[]
 

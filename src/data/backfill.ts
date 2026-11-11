@@ -1,9 +1,9 @@
-import type { Db } from './db'
-import { usdPerDay } from './frankfurter'
-import { closings, prices, walk } from './history'
-import type { Fetch } from './host'
-import { chart } from './llama'
-import { type CanonicalId, type Day, dayOf, type Price } from './schema'
+import type { Db } from './db.ts'
+import { usdPerDay } from './frankfurter.ts'
+import { closings, prices, walk } from './history.ts'
+import type { Fetch } from './host.ts'
+import { chart } from './llama.ts'
+import { type CanonicalId, type Day, dayOf, type Price } from './schema.ts'
 
 const span = 500
 const lanes = 5

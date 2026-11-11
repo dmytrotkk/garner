@@ -1,8 +1,8 @@
 import { expect, test } from 'bun:test'
-import { coin, held, institution, migrated, moved } from '../../host/fresh'
-import { createEvmAccount, createManualAccount } from './accounts'
-import { portfolio } from './portfolio'
-import { q } from './schema'
+import { coin, held, institution, migrated, moved } from '../../host/fresh.ts'
+import { createEvmAccount, createManualAccount } from './accounts.ts'
+import { portfolio } from './portfolio.ts'
+import { q } from './schema.ts'
 
 const eth = coin('coingecko:ethereum', 'ETH')
 const usdc = coin('coingecko:usd-coin', 'USDC')

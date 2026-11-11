@@ -1,8 +1,8 @@
-import { type Coin, coins } from './coingecko'
-import type { Db } from './db'
-import type { Fetch } from './host'
-import { type AssetId, q } from './schema'
-import { type Settings, setSetting, settings } from './settings'
+import { type Coin, coins } from './coingecko.ts'
+import type { Db } from './db.ts'
+import type { Fetch } from './host.ts'
+import { type AssetId, q } from './schema.ts'
+import { type Settings, setSetting, settings } from './settings.ts'
 
 const hour = 3_600_000
 const week = 168 * hour

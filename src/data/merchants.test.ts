@@ -1,9 +1,9 @@
 import { expect, test } from 'bun:test'
-import { account, coin, institution, migrated, moved } from '../../host/fresh'
-import { categories, categorize, clearAi, overview, pending, setRule } from './categories'
-import { movements } from './ledger'
-import { createMerchant, editMerchant, identify, removeMerchant } from './merchants'
-import { q } from './schema'
+import { account, coin, institution, migrated, moved } from '../../host/fresh.ts'
+import { categories, categorize, clearAi, overview, pending, setRule } from './categories.ts'
+import { movements } from './ledger.ts'
+import { createMerchant, editMerchant, identify, removeMerchant } from './merchants.ts'
+import { q } from './schema.ts'
 
 async function seeded() {
   const db = await migrated()

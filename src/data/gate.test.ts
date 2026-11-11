@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { gate } from './gate'
-import type { Provider, Reply, Transport } from './host'
+import { gate } from './gate.ts'
+import type { Provider, Reply, Transport } from './host.ts'
 
 const start = Date.parse('2026-10-18T12:00:00Z')
 

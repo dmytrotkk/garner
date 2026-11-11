@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { type Column, Label } from './table'
+import { type Column, Label } from './grid.tsx'
 
 const sizes = { md: { box: 'size-5', inset: 2 }, lg: { box: 'size-7', inset: 3 } }
 

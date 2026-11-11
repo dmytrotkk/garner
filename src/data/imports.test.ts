@@ -1,11 +1,11 @@
 import { expect, test } from 'bun:test'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
-import { book, coin, migrated } from '../../host/fresh'
-import { createEvmAccount, createInstitution, createManualAccount, remove } from './accounts'
-import { applyImport, imports, parsers, plan, type Route, read, removeImport } from './imports'
-import { ledger } from './ledger'
-import { type AssetId, dayOf, q } from './schema'
-import { open as decode, view } from './statement'
+import { book, coin, migrated } from '../../host/fresh.ts'
+import { createEvmAccount, createInstitution, createManualAccount, remove } from './accounts.ts'
+import { applyImport, imports, parsers, plan, type Route, read, removeImport } from './imports.ts'
+import { ledger } from './ledger.ts'
+import { type AssetId, dayOf, q } from './schema.ts'
+import { open as decode, view } from './statement.ts'
 
 const header =
   'Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance'

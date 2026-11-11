@@ -1,4 +1,4 @@
-import type { Fetch, Provider, Transport } from './host'
+import type { Fetch, Provider, Transport } from './host.ts'
 
 type Pause = { reason: 'is limiting requests' | 'is unavailable'; until: number }
 

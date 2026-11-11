@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import type { Row } from '../statement'
-import { revolut } from './revolut'
+import type { Row } from '../statement.ts'
+import { revolut } from './revolut.ts'
 
 const header =
   'Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance'

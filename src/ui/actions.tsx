@@ -1,8 +1,8 @@
 import { MoreHorizontalIcon } from '@hugeicons/core-free-icons'
-import { Button } from './button'
-import type { Action, Command } from './command'
-import { Icon } from './icon'
-import { Menu, menuUnder } from './menu'
+import { Button } from './button.tsx'
+import type { Action, Command } from './command.ts'
+import { Icon } from './icon.tsx'
+import { Menu, menuUnder } from './menu.tsx'
 
 type Props = { label: string; items: readonly Action[]; primary?: Command | undefined }
 

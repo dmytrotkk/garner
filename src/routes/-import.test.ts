@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
-import { migrated } from '../../host/fresh'
-import { read } from '../data/imports'
-import { type ImportFlow, next } from './-import'
+import { migrated } from '../../host/fresh.ts'
+import { read } from '../data/imports.ts'
+import { type ImportFlow, next } from './-import.ts'
 
 const text = [
   'Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance',

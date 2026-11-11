@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Button } from '../ui/button'
-import { Page, Section, Stat } from '../ui/page'
-import { root } from './-data'
-import { Institutions } from './-institutions'
-import { ask } from './-layer'
-import { Money } from './-money'
+import { Button } from '../ui/button.tsx'
+import { Page, Section, Stat } from '../ui/page.tsx'
+import { root } from './-data.ts'
+import { Institutions } from './-institutions.tsx'
+import { ask } from './-layer.ts'
+import { Money } from './-money.tsx'
 
 export const Route = createFileRoute('/crypto')({ component: Crypto })
 

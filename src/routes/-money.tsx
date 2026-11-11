@@ -1,8 +1,8 @@
-import { dash, type MoneyFormat, money, quantity, tick, units } from '../core/format'
-import { type AssetId, scale } from '../data/schema'
-import type { Currency } from '../data/settings'
-import { Mask } from '../ui/mask'
-import { root } from './-data'
+import { dash, type MoneyFormat, money, quantity, tick, units } from '../core/format.ts'
+import { type AssetId, scale } from '../data/schema.ts'
+import type { Currency } from '../data/settings.ts'
+import { Mask } from '../ui/mask.tsx'
+import { root } from './-data.ts'
 
 type Sum = { amount: number; currency: Currency }
 

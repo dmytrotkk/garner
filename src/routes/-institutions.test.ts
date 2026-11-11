@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
 import { Wallet01Icon } from '@hugeicons/core-free-icons'
-import { markOf } from '../ui/marks'
-import { glyphOf } from './-institutions'
+import { markOf } from '../ui/marks.ts'
+import { glyphOf } from './-institutions.tsx'
 
 const evm = { kind: 'evm' } as const
 const manual = { kind: 'manual' } as const

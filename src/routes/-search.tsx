@@ -1,6 +1,6 @@
 import { Search01Icon } from '@hugeicons/core-free-icons'
 import { useNavigate } from '@tanstack/react-router'
-import { day, local, plural } from '../core/format'
+import { day, local, plural } from '../core/format.ts'
 import {
   hit,
   hits,
@@ -11,18 +11,18 @@ import {
   searchable,
   starts,
   tokens,
-} from '../core/search'
-import type { Movement } from '../data/ledger'
-import { type Flag, holds, literal, parse, type Query, reading } from '../data/query'
-import type { Day } from '../data/schema'
-import { internal, valuer } from '../data/spending'
-import { peer } from '../data/transfers'
-import type { Command } from '../ui/command'
-import type { Route } from './__root'
-import { hues, icons, kindIcons, kindLabel, typeGroups } from './-categories'
-import { root } from './-data'
-import { code, Money, sum } from './-money'
-import { kinds, tileOf } from './-movements'
+} from '../core/search.ts'
+import type { Movement } from '../data/ledger.ts'
+import { type Flag, holds, literal, parse, type Query, reading } from '../data/query.ts'
+import type { Day } from '../data/schema.ts'
+import { internal, valuer } from '../data/spending.ts'
+import { peer } from '../data/transfers.ts'
+import type { Command } from '../ui/command.ts'
+import type { Route } from './__root.tsx'
+import { hues, icons, kindIcons, kindLabel, typeGroups } from './-categories.tsx'
+import { root } from './-data.ts'
+import { code, Money, sum } from './-money.tsx'
+import { kinds, tileOf } from './-movements.tsx'
 
 type Data = Pick<
   (typeof Route)['types']['loaderData'],

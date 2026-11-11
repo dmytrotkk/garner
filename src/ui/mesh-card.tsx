@@ -1,7 +1,7 @@
 import { MeshGradient } from '@paper-design/shaders-react'
 import type { PointerEvent, ReactNode } from 'react'
-import { Glyph } from './glyph'
-import { type Hue, hues } from './hues'
+import { Glyph } from './glyph.tsx'
+import { type Hue, hues } from './hues.ts'
 
 type Spot = { hue: Hue; value: number }
 

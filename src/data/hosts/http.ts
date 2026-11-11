@@ -1,4 +1,4 @@
-import type { Host } from '../host'
+import type { Host } from '../host.ts'
 
 const call =
   (method: Exclude<keyof Host, 'icon'>) =>

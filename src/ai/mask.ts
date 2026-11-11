@@ -1,6 +1,6 @@
 import { sql } from 'kysely'
-import type { Db } from '../data/db'
-import { type Address, q } from '../data/schema'
+import type { Db } from '../data/db.ts'
+import { type Address, q } from '../data/schema.ts'
 
 const hash = /0x[0-9a-f]{64}/gi
 const full = /0x[0-9a-f]{40}/gi

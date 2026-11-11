@@ -57,20 +57,20 @@ import {
   UserGroupIcon,
   Wrench01Icon,
 } from '@hugeicons/core-free-icons'
-import type { IconSvgElement } from '@hugeicons/react'
 import { Link } from '@tanstack/react-router'
-import { dash, plural } from '../core/format'
-import type { CategoryIcon } from '../data/categories'
-import type { Assignment } from '../data/ledger'
-import type { MerchantKind } from '../data/merchants'
-import type { CategoryType } from '../data/schema'
-import { Copy } from '../ui/copy'
-import type { Hue } from '../ui/hues'
-import { Icon } from '../ui/icon'
-import { Notice } from '../ui/notice'
-import { Scan } from '../ui/scan'
-import { root } from './-data'
-import { dismiss, useDismissal } from './-notice'
+import { dash, plural } from '../core/format.ts'
+import type { CategoryIcon } from '../data/categories.ts'
+import type { Assignment } from '../data/ledger.ts'
+import type { MerchantKind } from '../data/merchants.ts'
+import type { CategoryType } from '../data/schema.ts'
+import { Copy } from '../ui/copy.tsx'
+import type { Hue } from '../ui/hues.ts'
+import type { IconSvgElement } from '../ui/icon.tsx'
+import { Icon } from '../ui/icon.tsx'
+import { Notice } from '../ui/notice.tsx'
+import { Scan } from '../ui/scan.tsx'
+import { root } from './-data.ts'
+import { dismiss, useDismissal } from './-notice.ts'
 
 export const icons: Record<CategoryIcon, IconSvgElement> = {
   basket: ShoppingBasket01Icon,

@@ -1,9 +1,9 @@
 import { expect, test } from 'bun:test'
-import { coin, migrated } from '../../host/fresh'
-import { gate } from './gate'
-import type { Fetch } from './host'
-import { q } from './schema'
-import { display, setCurrency, setSetting, settings } from './settings'
+import { coin, migrated } from '../../host/fresh.ts'
+import { gate } from './gate.ts'
+import type { Fetch } from './host.ts'
+import { q } from './schema.ts'
+import { display, setCurrency, setSetting, settings } from './settings.ts'
 
 test('settings have defaults, persist, and fall back on a value this version does not know', async () => {
   const db = await migrated()

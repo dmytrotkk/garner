@@ -1,6 +1,6 @@
-import type { Db } from './db'
-import type { Icon } from './host'
-import { q } from './schema'
+import type { Db } from './db.ts'
+import type { Icon } from './host.ts'
+import { q } from './schema.ts'
 
 const native = '0x0000000000000000000000000000000000000000'
 const deployment = /^eip155:(\d+)\/(?:erc20:(0x[0-9a-f]{40})|native)$/

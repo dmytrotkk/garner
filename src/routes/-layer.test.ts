@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { type Layer, next, type Prompt } from './-layer'
+import { type Layer, next, type Prompt } from './-layer.ts'
 
 const none: Layer = { kind: 'none' }
 const palette: Layer = { kind: 'palette', query: '' }

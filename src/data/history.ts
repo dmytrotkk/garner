@@ -1,8 +1,8 @@
-import { units } from '../core/format'
-import type { Db } from './db'
-import { ledger } from './ledger'
-import { type AssetId, type CanonicalId, type Day, dayOf, type Price, q } from './schema'
-import { display, settings } from './settings'
+import { units } from '../core/format.ts'
+import type { Db } from './db.ts'
+import { ledger } from './ledger.ts'
+import { type AssetId, type CanonicalId, type Day, dayOf, type Price, q } from './schema.ts'
+import { display, settings } from './settings.ts'
 
 type Held = { canonical: CanonicalId; units: number }
 

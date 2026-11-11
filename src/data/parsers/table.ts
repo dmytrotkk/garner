@@ -1,4 +1,4 @@
-import { cells, chain, instant, keyed, type Parser, reader } from '../statement'
+import { cells, chain, instant, keyed, type Parser, reader } from '../statement.ts'
 
 type Mapping = {
   id: string

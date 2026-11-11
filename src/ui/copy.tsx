@@ -1,7 +1,8 @@
 import { Copy01Icon, Tick02Icon } from '@hugeicons/core-free-icons'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Button } from './button'
-import { Icon } from './icon'
+import { useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
+import { Button } from './button.tsx'
+import { Icon } from './icon.tsx'
 
 type Props = { text: string; label: string; variant?: 'ghost' | 'secondary' }
 
@@ -12,24 +13,16 @@ export function Copy({ text, label, variant = 'ghost' }: Props) {
   useEffect(() => () => clearTimeout(timer.current), [])
   const show = (next: 'idle' | 'copied') => {
     const node = button.current
-    if (node && variant === 'secondary') node.style.width = `${node.offsetWidth}px`
-    setState(next)
-  }
-  useLayoutEffect(() => {
-    const node = button.current
-    if (!node?.style.width) return
-    const from = node.style.width
+    if (!node || variant !== 'secondary') return setState(next)
+    const from = `${node.offsetWidth}px`
+    flushSync(() => setState(next))
     node.style.width = ''
     const to = `${node.offsetWidth}px`
     node.style.width = from
     node.getBoundingClientRect()
     node.style.width = to
-    const settle = () => {
-      node.style.width = ''
-    }
-    node.addEventListener('transitionend', settle, { once: true })
-    return () => node.removeEventListener('transitionend', settle)
-  }, [state])
+    node.addEventListener('transitionend', () => node.style.removeProperty('width'), { once: true })
+  }
   const copied = state === 'copied'
   return (
     <Button

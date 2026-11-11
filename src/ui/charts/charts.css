@@ -1,6 +1,5 @@
 .chart .recharts-surface,
-.chart .recharts-layer,
-.chart .recharts-sector {
+.chart .recharts-layer {
   outline: none;
 }
 

@@ -1,8 +1,8 @@
 import { type ErrorComponentProps, Link, useRouter } from '@tanstack/react-router'
-import { Button } from '../ui/button'
-import { Page } from '../ui/page'
-import { Sidebar } from '../ui/sidebar'
-import { useSidebar } from './-window'
+import { Button } from '../ui/button.tsx'
+import { Page } from '../ui/page.tsx'
+import { Sidebar } from '../ui/sidebar.tsx'
+import { useSidebar } from './-window.tsx'
 
 export function Pending() {
   const shown = useSidebar()

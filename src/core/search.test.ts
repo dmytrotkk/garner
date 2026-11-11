@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { search } from './search'
+import { search } from './search.ts'
 
 const items = [
   { group: 'Go to', label: 'Settings', keywords: ['currency', 'privacy'] },
